@@ -30,35 +30,35 @@ public class Main {
 			printUserMenu();
 			navigator=sc.nextInt();
 			switch(navigator) {
-				case 1:
-					System.out.println("please enter product name from list:");
-					Register.printStoreItems();
-					userInput=sc.next();
-					System.out.println("please enter amount:");
-					quantity=sc.nextDouble();
-					register.addItemToPurchase(userInput, quantity);
-					break;
-				case 2:
-					temp=register.currenPurchaseCost();
-					System.out.println("Total price is: " + temp + ",please enter money amount you are paying");
-					temp=register.change(sc.nextDouble());
-					System.out.println("Thank you for your purchase, your change is: " + temp + " shekels");
-					break;
-				case 3:
-					System.out.println(register.printPurchase());
-					break;
-				case 4:
-					temp=register.currenPurchaseCost();
-					System.out.println("Total cost is: " + temp);
-					break;
-				case 5:
-					temp=register.currentCashInRegister();
-					System.out.println("Register has " + temp + "shekel");
-					break;
-				case 6:
-					System.out.println("Register is closed");	
-					sc.close();
-					break;
+			case 1:
+				System.out.println("please enter product name from list:");
+				Register.printStoreItems();
+				userInput=sc.next();
+				System.out.println("please enter amount:");
+				quantity=sc.nextDouble();
+				register.addItemToPurchase(userInput, quantity);
+				break;
+			case 2:
+				temp=register.currenPurchaseCost();
+				System.out.println("Total price is: " + temp + ",please enter money amount you are paying");
+				temp=register.change(sc.nextDouble());
+				System.out.println("Thank you for your purchase, your change is: " + temp + " shekels");
+				break;
+			case 3:
+				System.out.println(register.printPurchase());
+				break;
+			case 4:
+				temp=register.currenPurchaseCost();
+				System.out.println("Total cost is: " + temp);
+				break;
+			case 5:
+				temp=register.currentCashInRegister();
+				System.out.println("Register has " + temp + "shekel");
+				break;
+			case 6:
+				System.out.println("Register is closed");	
+				sc.close();
+				break;
 			}	
 		}
 	}
