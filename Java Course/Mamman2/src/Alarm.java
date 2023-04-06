@@ -5,9 +5,10 @@ public abstract class Alarm {
 	protected LocalDateTime alarmActivationDate;
 	protected String address;
 
-	public Alarm(String address) {
-		this.alarmActivationDate = LocalDateTime.now();
-		this.address = address;
+	public Alarm(String address) throws BadAlarm {
+		this.alarmActivationDate = LocalDateTime.now(); 
+		if(address==null) throw new BadAlarm();
+			this.address = address;
 	}
 
 	public String toString() {

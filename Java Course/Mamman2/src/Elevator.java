@@ -1,7 +1,7 @@
 public class Elevator extends Alarm{
 	private int floor;
 	
-	public Elevator(String address,int floor) {
+	public Elevator(String address,int floor) throws BadAlarm {
 		super(address);
 		this.floor=floor;
 	}

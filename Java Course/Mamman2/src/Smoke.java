@@ -2,7 +2,7 @@
 public class Smoke extends Alarm {
 	protected String operator;
 	
-	public Smoke(String address,String operator) {
+	public Smoke(String address,String operator) throws BadAlarm {
 		super(address);
 		this.operator=operator;
 	}

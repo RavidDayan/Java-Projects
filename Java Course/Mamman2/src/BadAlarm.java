@@ -1,6 +1,6 @@
 
-public class BadAlarm extends Exception{
+public class BadAlarm extends Exception {
 	public BadAlarm() {
-		System.out.println("unrecognizable address, please try again");
+		System.err.println("\u001B[0m"+"A bad address has been entered, please enter a known address");
 	}
 }

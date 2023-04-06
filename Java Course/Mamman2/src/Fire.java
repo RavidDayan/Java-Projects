@@ -3,7 +3,7 @@ public class Fire extends Smoke {
 	
 	private boolean active;
 	
-	public Fire(String address,String operator) {
+	public Fire(String address,String operator) throws BadAlarm {
 		super(address,operator);
 		this.active=true;
 	}
