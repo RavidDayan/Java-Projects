@@ -1,17 +1,18 @@
 package Q1;
+
 import java.util.ArrayList;
 
 public class Main {
 	public static void main(String[] args) {
 		try {
-		TestAlarms.process(alarmExceptionListGenerator());
-		}
-		catch(BadAlarm badAlarm) {
-	
+			TestAlarms.process(alarmExceptionListGenerator());
+		} catch (BadAlarm badAlarm) {
+			System.out.println(badAlarm.getMessage());
+
 		}
 	}
 
-	private  static ArrayList<Alarm> alarmExceptionListGenerator() throws BadAlarm{
+	private static ArrayList<Alarm> alarmExceptionListGenerator() throws BadAlarm {
 		ArrayList<Alarm> alarmList = new ArrayList<Alarm>();
 		alarmList.add(new Fire(null, "Operator 1"));
 		alarmList.add(new Smoke("address 2", "Operator 2"));
@@ -43,6 +44,5 @@ public class Main {
 //		alarmList.add(new Elevator("address 12", 12));
 //		return alarmList;
 //	}
-	
 
 }
