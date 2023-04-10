@@ -101,21 +101,6 @@ public class BigInt {
 	}
 
 	private void hopNumberForward(int index, int addedNumber) {
-		int sum;
-		while (index >= 0) {
-			sum = this.number.get(index) + addedNumber;
-			if (sum > 9) {
-				this.number.set(index, sum % 10);
-				addedNumber = (sum) / 10;
-			} else {
-				this.number.set(index, sum);
-				break;
-			}
-			if (addedNumber != 0) {
-				this.number.add(0, addedNumber);
-				index--;
-			}
-		}
 
 	}
 
