@@ -62,7 +62,6 @@ public class BigInt {
 			newNumber.simpleAdd(addedNumber);
 		} else {
 			newNumber = addedNumber.clone();
-			newNumber = this.clone();
 			newNumber.simpleAdd(this);
 		}
 		return newNumber;
@@ -77,11 +76,14 @@ public class BigInt {
 	}
 
 	private void simpleAdd(BigInt other) {
-		for (int index = this.size()-1; index >= 0; index--) {
-			this.hopNumberForward(index, other.number.get(index));
+		for (int index = other.size() - 1; index >= 0; index--) {
+			this.hopNumberForward(this.getReletiveIndex(other, index), other.number.get(index));
 		}
 	}
 
+	private int getReletiveIndex(BigInt other, int index) {
+		return this.size() - other.size() + index;
+	}
 	// public BigInt minus() {
 
 //	}
@@ -101,6 +103,22 @@ public class BigInt {
 	}
 
 	private void hopNumberForward(int index, int addedNumber) {
+		int sum;
+
+		while (index >= 0) {
+			sum = this.number.get(index) + addedNumber;
+			if (sum > 9) {
+				this.number.set(index, sum % 10);
+				addedNumber = (sum) / 10;
+			} else {
+				this.number.set(index, sum);
+				break;
+			}
+			index--;
+			if (index == -1) {
+				this.number.add(0, 1);
+			}
+		}
 
 	}
 
