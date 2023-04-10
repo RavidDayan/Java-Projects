@@ -113,6 +113,7 @@ public class BigInt {
 	// }
 
 	public void print() {
+		System.out.println(this.multiplyer);
 		System.out.print(this.multiplyer*this.number.get(0));
 		for (int i = 1; i < this.number.size(); i++) {
 			System.out.print(this.number.get(i));
@@ -156,19 +157,21 @@ public class BigInt {
 		}
 	}
 
-	private int dominant(BigInt other) {
+	private int dominant(BigInt other) {//check which is the bigger absolute value,if they are the same 
 		if (this.size() > other.size()) {
 			return 1;
 		} else if (this.size() < other.size()) {
 			return -1;
 		} else {
-			int num=this.number.get(0);
-			int num2=other.number.get(0);
-			if (this.number.get(0) >= other.number.get(0)) {
-				return 1;
-			} else {
-				return -1;
+			for(int i=0;i<this.size();i++) {
+				if (this.number.get(i) > other.number.get(i)) {
+					return 1;
+				} 
+				if (this.number.get(i) < other.number.get(i)){
+					return -1;
+				}
 			}
+			return 1;
 		}
 	}
 
