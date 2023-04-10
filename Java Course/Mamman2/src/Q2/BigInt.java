@@ -58,11 +58,21 @@ public class BigInt {
 		BigInt newNumber;
 		int dominantNumber = this.dominant(addedNumber);
 		if (dominantNumber == 1) {
-			newNumber = this.clone();
-			newNumber.simpleAdd(addedNumber);
+			if (this.sameMultiplyer(addedNumber)) {
+				newNumber = this.clone();
+				newNumber.simpleAdd(addedNumber);
+			} else {
+				newNumber = this.clone();
+				newNumber.simpleSub(addedNumber);
+			}
 		} else {
-			newNumber = addedNumber.clone();
-			newNumber.simpleAdd(this);
+			if (this.sameMultiplyer(addedNumber)) {
+				newNumber = addedNumber.clone();
+				newNumber.simpleAdd(this);
+			} else {
+				newNumber = addedNumber.clone();
+				newNumber.simpleSub(this);
+			}
 		}
 		return newNumber;
 	}
@@ -78,6 +88,12 @@ public class BigInt {
 	private void simpleAdd(BigInt other) {
 		for (int index = other.size() - 1; index >= 0; index--) {
 			this.hopNumberForward(this.getReletiveIndex(other, index), other.number.get(index));
+		}
+	}
+	
+	private void simpleSub(BigInt other) {
+		for (int index = other.size() - 1; index >= 0; index--) {
+			this.hopNumberBackwards(this.getReletiveIndex(other, index), other.number.get(index));
 		}
 	}
 
@@ -97,14 +113,14 @@ public class BigInt {
 	// }
 
 	public void print() {
-		for (int i = 0; i < this.number.size(); i++) {
-			System.out.println(this.number.get(i));
+		System.out.print(this.multiplyer*this.number.get(0));
+		for (int i = 1; i < this.number.size(); i++) {
+			System.out.print(this.number.get(i));
 		}
 	}
 
 	private void hopNumberForward(int index, int addedNumber) {
 		int sum;
-
 		while (index >= 0) {
 			sum = this.number.get(index) + addedNumber;
 			if (sum > 9) {
@@ -119,17 +135,36 @@ public class BigInt {
 				this.number.add(0, 1);
 			}
 		}
-
 	}
 
-	// private void hopNumberBackwards(int index,int subNumber) {
+	private void hopNumberBackwards(int index, int subNumber) {
+		int sum;
+
+		while (index >= 0) {
+			sum = this.number.get(index) - subNumber;
+			if (sum < 0) {
+				this.number.set(index, sum +10);
+				this.number.set(index-1, this.number.get(index)-1);
+			} else {
+				this.number.set(index, sum);
+				break;
+			}
+			index--;
+			if (index == -1) {
+				this.number.add(0, 1);
+			}
+		}
+	}
+
 	private int dominant(BigInt other) {
 		if (this.size() > other.size()) {
 			return 1;
 		} else if (this.size() < other.size()) {
 			return -1;
 		} else {
-			if (Character.getNumericValue(this.number.get(0)) >= Character.getNumericValue(other.number.get(0))) {
+			int num=this.number.get(0);
+			int num2=other.number.get(0);
+			if (this.number.get(0) >= other.number.get(0)) {
 				return 1;
 			} else {
 				return -1;
