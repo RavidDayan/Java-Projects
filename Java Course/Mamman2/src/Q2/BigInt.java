@@ -76,7 +76,30 @@ public class BigInt {
 		}
 		return newNumber;
 	}
-
+	
+	public BigInt minus(BigInt subtracttedNumber) {
+		BigInt newNumber;
+		int dominantNumber = this.dominant(subtracttedNumber);
+		if (dominantNumber == 1) {
+			if (this.sameMultiplyer(subtracttedNumber)) {
+				newNumber = this.clone();
+				newNumber.simpleSub(subtracttedNumber);
+			} else {
+				newNumber = this.clone();
+				newNumber.simpleAdd(subtracttedNumber);
+			}
+		} else {
+			if (this.sameMultiplyer(subtracttedNumber)) {
+				newNumber = subtracttedNumber.clone();
+				newNumber.simpleSub(this);
+			} else {
+				newNumber = subtracttedNumber.clone();
+				newNumber.simpleAdd(this);
+			}
+		}
+		return newNumber;
+	}
+	
 	private boolean sameMultiplyer(BigInt addedNumber) {
 		if (this.multiplyer == addedNumber.multiplyer) {
 			return true;
@@ -100,9 +123,7 @@ public class BigInt {
 	private int getReletiveIndex(BigInt other, int index) {
 		return this.size() - other.size() + index;
 	}
-	// public BigInt minus() {
 
-//	}
 
 	// public BigInt multiply() {
 
