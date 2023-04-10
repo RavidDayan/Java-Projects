@@ -1,3 +1,4 @@
+package Q1;
 
 public class BadAlarm extends Exception {
 	public BadAlarm() {

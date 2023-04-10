@@ -1,3 +1,4 @@
+package Q1;
 
 public class Fire extends Smoke {
 	

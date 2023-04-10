@@ -1,3 +1,4 @@
+package Q1;
 
 public class Smoke extends Alarm {
 	protected String operator;
