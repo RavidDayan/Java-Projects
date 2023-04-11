@@ -199,18 +199,41 @@ public class BigInt implements Comparable<BigInt> {
 		this.multiplyer *= -1;
 	}
 
-	public BigInt divide(BigInt dividedNumber) {
-		BigInt newNumber = this.clone();
+	public BigInt divide(BigInt divider) {
+		BigInt devided = this.clone();
+		BigInt Temp = divider.clone();
 		BigInt counter = new BigInt("+0");
-		if (dividedNumber.checkIfNumberIsZero()) {
+		BigInt newNumber = new BigInt("+0");
+		if (divider.checkIfNumberIsZero()) {
 			throw new ArithmeticException("A number cant be divided by 0");
 		} else {
+			if (this.checkIfNumberIsZero())
+				return new BigInt("+0");
+
+			if (this.compareTo(counter) == 0)
+				return new BigInt("+1");
+
+			if (this.compareAbsoluteValue(divider) == 0) {
+				if (this.sameMultiplyer(divider))
+					return new BigInt("+1");
+				else
+					return new BigInt("-1");
+			}
+			if (this.compareAbsoluteValue(divider) == -1) {
+				return new BigInt("+0");
+			}
+
+				while(Temp.compareAbsoluteValue(devided)<=0) {
+					Temp.plus("+1");
+					counter.plus("1")
+					
+				}
 			
 		}
-		return newNumber;
+		return devided;
 	}
-
-	private boolean checkIfNumberIsZero() {
+	
+ 	private boolean checkIfNumberIsZero() {
 		if (this.size() == 1 && this.number.get(0) == 0) {
 			return true;
 		} else {
@@ -256,35 +279,35 @@ public class BigInt implements Comparable<BigInt> {
 
 	public int compareTo(BigInt other) {
 		int absoluteValue = this.compareAbsoluteValue(other);
-		int returnValue=0;
+		int returnValue = 0;
 		if (this.multiplyer > other.multiplyer)
-			returnValue= 1;
+			returnValue = 1;
 		if (this.multiplyer < other.multiplyer)
-			returnValue =1;
+			returnValue = 1;
 		if (this.multiplyer == other.multiplyer) {
 			if (absoluteValue == 1)
-				returnValue= 1;
+				returnValue = 1;
 			if (absoluteValue == -1)
-				returnValue= -1;
+				returnValue = -1;
 			else
-				returnValue= 0;
+				returnValue = 0;
 		}
 		return returnValue;
 	}
+
 	public String toString() {
 		String returnedString;
-		if (this.multiplyer==1){
-			returnedString="+";
+		if (this.multiplyer == 1) {
+			returnedString = "+";
+		} else {
+			returnedString = "-";
 		}
-		else {
-			returnedString="-";
-		}
-		for(int index=0;index<this.size();index++) {
-			returnedString+=this.number.get(index);
+		for (int index = 0; index < this.size(); index++) {
+			returnedString += this.number.get(index);
 		}
 		return returnedString;
 	}
-	
+
 	public boolean equals(BigInt other) {
 		if (this.compareTo(other) == 0)
 			return true;
