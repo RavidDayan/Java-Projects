@@ -2,7 +2,7 @@ package Q2;
 
 import java.util.ArrayList;
 
-public class BigInt {
+public class BigInt implements Comparable<BigInt> {
 	private int multiplyer;
 	private ArrayList<Integer> number;
 
@@ -56,8 +56,8 @@ public class BigInt {
 
 	public BigInt plus(BigInt addedNumber) {
 		BigInt newNumber;
-		int dominantNumber = this.dominant(addedNumber);
-		if (dominantNumber == 1) {
+		int dominantNumber = this.compareTo(addedNumber);
+		if (dominantNumber == 1 || dominantNumber == 0) {
 			if (this.sameMultiplyer(addedNumber)) {
 				newNumber = this.clone();
 				newNumber.simpleAdd(addedNumber);
@@ -74,13 +74,14 @@ public class BigInt {
 				newNumber.simpleSub(this);
 			}
 		}
+
 		return newNumber;
 	}
-	
+
 	public BigInt minus(BigInt subtracttedNumber) {
 		BigInt newNumber;
-		int dominantNumber = this.dominant(subtracttedNumber);
-		if (dominantNumber == 1) {
+		int dominantNumber = this.compareTo(subtracttedNumber);
+		if (dominantNumber == 1 || dominantNumber == 0) {
 			if (this.sameMultiplyer(subtracttedNumber)) {
 				newNumber = this.clone();
 				newNumber.simpleSub(subtracttedNumber);
@@ -99,9 +100,15 @@ public class BigInt {
 		}
 		return newNumber;
 	}
-	
-	private boolean sameMultiplyer(BigInt addedNumber) {
-		if (this.multiplyer == addedNumber.multiplyer) {
+
+	private void cleanZeroFromHead() {
+		while (this.number.get(0) == 0 && this.size() > 1) {
+			this.number.remove(0);
+		}
+	}
+
+	private boolean sameMultiplyer(BigInt other) {
+		if (this.multiplyer == other.multiplyer) {
 			return true;
 		}
 		return false;
@@ -113,29 +120,21 @@ public class BigInt {
 			this.hopNumberForward(this.getReletiveIndex(other, index), other.number.get(index));
 		}
 	}
-	
+
 	private void simpleSub(BigInt other) {
 		for (int index = other.size() - 1; index >= 0; index--) {
 			this.hopNumberBackwards(this.getReletiveIndex(other, index), other.number.get(index));
 		}
+		this.cleanZeroFromHead();
 	}
 
 	private int getReletiveIndex(BigInt other, int index) {
 		return this.size() - other.size() + index;
 	}
 
-
-	// public BigInt multiply() {
-
-//	}
-
-	// public BigInt divide() {
-
-	// }
-
 	public void print() {
 		System.out.println(this.multiplyer);
-		System.out.print(this.multiplyer*this.number.get(0));
+		System.out.print(this.multiplyer * this.number.get(0));
 		for (int i = 1; i < this.number.size(); i++) {
 			System.out.print(this.number.get(i));
 		}
@@ -147,52 +146,75 @@ public class BigInt {
 			sum = this.number.get(index) + addedNumber;
 			if (sum > 9) {
 				this.number.set(index, sum % 10);
-				addedNumber = (sum) / 10;
+				addedNumber = sum / 10;
+				index--;
+				if (index == -1) {
+					this.number.add(0, addedNumber);
+				}
 			} else {
 				this.number.set(index, sum);
 				break;
-			}
-			index--;
-			if (index == -1) {
-				this.number.add(0, 1);
 			}
 		}
 	}
 
 	private void hopNumberBackwards(int index, int subNumber) {
 		int sum;
-
 		while (index >= 0) {
 			sum = this.number.get(index) - subNumber;
 			if (sum < 0) {
-				this.number.set(index, sum +10);
-				this.number.set(index-1, this.number.get(index)-1);
+				this.number.set(index, sum + 10);
+				this.number.set(index - 1, this.number.get(index - 1) - 1);
+				index--;
+				subNumber = 0;
 			} else {
 				this.number.set(index, sum);
 				break;
 			}
-			index--;
-			if (index == -1) {
-				this.number.add(0, 1);
-			}
 		}
 	}
 
-	private int dominant(BigInt other) {//check which is the bigger absolute value,if they are the same 
-		if (this.size() > other.size()) {
-			return 1;
-		} else if (this.size() < other.size()) {
-			return -1;
+	public BigInt multiply(BigInt multiplyNumber) {
+		BigInt newNumber = this.clone();
+		BigInt one;
+		if (multiplyNumber.multiplyer == 1) {
+			one = new BigInt("+1");
 		} else {
-			for(int i=0;i<this.size();i++) {
-				if (this.number.get(i) > other.number.get(i)) {
-					return 1;
-				} 
-				if (this.number.get(i) < other.number.get(i)){
-					return -1;
-				}
-			}
-			return 1;
+			one = new BigInt("-1");
+		}
+		while (multiplyNumber.number.get(0) != 1) {
+			newNumber = newNumber.plus(this);
+			multiplyNumber = multiplyNumber.minus(one);
+		}
+		if (this.sameMultiplyer(multiplyNumber) == false && newNumber.multiplyer == 1) {
+			newNumber.flipMultiplyer();
+		}
+		if (this.sameMultiplyer(multiplyNumber) && newNumber.multiplyer == -1) {
+			newNumber.flipMultiplyer();
+		}
+		return newNumber;
+	}
+
+	private void flipMultiplyer() {
+		this.multiplyer *= -1;
+	}
+
+	public BigInt divide(BigInt dividedNumber) {
+		BigInt newNumber = this.clone();
+		BigInt counter = new BigInt("+0");
+		if (dividedNumber.checkIfNumberIsZero()) {
+			throw new ArithmeticException("A number cant be divided by 0");
+		} else {
+
+		}
+		return newNumber;
+	}
+
+	private boolean checkIfNumberIsZero() {
+		if (this.size() == 1 && this.number.get(0) == 0) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -213,4 +235,22 @@ public class BigInt {
 		}
 		return cloneNum;
 	}
+
+	public int compareTo(BigInt other) {
+		if (this.size() > other.size())
+			return 1;
+
+		if (this.size() < other.size())
+			return -1;
+		else {
+			for (int i = 0; i < this.size(); i++) {
+				if (this.number.get(i) > other.number.get(i))
+					return 1;
+				if (this.number.get(i) < other.number.get(i))
+					return -1;
+			}
+			return 0;
+		}
+	}
+
 }
