@@ -132,14 +132,6 @@ public class BigInt implements Comparable<BigInt> {
 		return this.size() - other.size() + index;
 	}
 
-	public void print() {
-		System.out.println(this.multiplyer);
-		System.out.print(this.multiplyer * this.number.get(0));
-		for (int i = 1; i < this.number.size(); i++) {
-			System.out.print(this.number.get(i));
-		}
-	}
-
 	private void hopNumberForward(int index, int addedNumber) {
 		int sum;
 		while (index >= 0) {
@@ -178,9 +170,9 @@ public class BigInt implements Comparable<BigInt> {
 		BigInt newNumber = this.clone();
 		BigInt one;
 		if (multiplyNumber.multiplyer == 1) {
-			one = new BigInt("+1");
+			one = one();
 		} else {
-			one = new BigInt("-1");
+			one = minusOne();
 		}
 		while (multiplyNumber.number.get(0) != 1) {
 			newNumber = newNumber.plus(this);
@@ -201,36 +193,40 @@ public class BigInt implements Comparable<BigInt> {
 
 	public BigInt divide(BigInt divider) {
 		BigInt devided = this.clone();
-		BigInt Temp = divider.clone();
-		BigInt counter = new BigInt("+0");
-		BigInt newNumber = new BigInt("+0");
+		BigInt counter = zero();
+		BigInt newNumber = zero();
 		if (divider.checkIfNumberIsZero()) {
 			throw new ArithmeticException("A number cant be divided by 0");
 		} else {
-			if (this.checkIfNumberIsZero())
-				return new BigInt("+0");
+			if (devided.checkIfNumberIsZero())
+				return zero();
 
-			if (this.compareTo(counter) == 0)
-				return new BigInt("+1");
+			if (devided.compareTo(divider) == 0)
+				return one();
 
-			if (this.compareAbsoluteValue(divider) == 0) {
-				if (this.sameMultiplyer(divider))
-					return new BigInt("+1");
+			if (devided.compareAbsoluteValue(divider) == 0) {
+				if (devided.sameMultiplyer(divider))
+					return one();
 				else
-					return new BigInt("-1");
+					return minusOne();
 			}
-			if (this.compareAbsoluteValue(divider) == -1) {
-				return new BigInt("+0");
+			if (devided.compareAbsoluteValue(divider) == -1) {
+				return zero();
 			}
 
-				while(Temp.compareAbsoluteValue(devided)<=0) {
-					Temp.plus();
-					counter.plus("1");
-					
-				}
-			
+			while (newNumber.compareAbsoluteValue(devided) <= 0) {
+				newNumber = newNumber.plus(divider);
+				counter=counter.plus(one());
+			}
 		}
-		return devided;
+		newNumber=counter.minus(one());
+		if(devided.sameMultiplyer(divider))
+			return newNumber;
+		else
+		{
+			newNumber.flipMultiplyer();
+			return newNumber;
+		}
 	}
 	
  	private boolean checkIfNumberIsZero() {
@@ -301,9 +297,9 @@ public class BigInt implements Comparable<BigInt> {
 				returnValue = 1;
 			if (absoluteValue == -1)
 				returnValue = -1;
-			else
+			if (absoluteValue == 0)
 				returnValue = 0;
-		}
+			}
 		return returnValue;
 	}
 
