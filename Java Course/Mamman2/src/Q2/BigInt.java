@@ -284,4 +284,11 @@ public class BigInt implements Comparable<BigInt> {
 		}
 		return returnedString;
 	}
+	
+	public boolean equals(BigInt other) {
+		if (this.compareTo(other) == 0)
+			return true;
+		else
+			return false;
+	}
 }
