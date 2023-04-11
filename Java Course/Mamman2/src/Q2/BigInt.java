@@ -98,6 +98,10 @@ public class BigInt implements Comparable<BigInt> {
 				newNumber.simpleAdd(this);
 			}
 		}
+		if(this.sameMultiplyer(subtracttedNumber)==false)
+				{
+			newNumber.flipMultiplyer();
+				}
 		return newNumber;
 	}
 
@@ -169,6 +173,10 @@ public class BigInt implements Comparable<BigInt> {
 	public BigInt multiply(BigInt multiplyNumber) {
 		BigInt newNumber = this.clone();
 		BigInt one;
+		if (this.checkIfNumberIsZero() || multiplyNumber.checkIfNumberIsZero())
+		{
+			return zero();
+		}
 		if (multiplyNumber.multiplyer == 1) {
 			one = one();
 		} else {
