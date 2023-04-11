@@ -56,7 +56,7 @@ public class BigInt implements Comparable<BigInt> {
 
 	public BigInt plus(BigInt addedNumber) {
 		BigInt newNumber;
-		int dominantNumber = this.compareTo(addedNumber);
+		int dominantNumber = this.compareAbsoluteValue(addedNumber);
 		if (dominantNumber == 1 || dominantNumber == 0) {
 			if (this.sameMultiplyer(addedNumber)) {
 				newNumber = this.clone();
@@ -80,7 +80,7 @@ public class BigInt implements Comparable<BigInt> {
 
 	public BigInt minus(BigInt subtracttedNumber) {
 		BigInt newNumber;
-		int dominantNumber = this.compareTo(subtracttedNumber);
+		int dominantNumber = this.compareAbsoluteValue(subtracttedNumber);
 		if (dominantNumber == 1 || dominantNumber == 0) {
 			if (this.sameMultiplyer(subtracttedNumber)) {
 				newNumber = this.clone();
@@ -205,7 +205,7 @@ public class BigInt implements Comparable<BigInt> {
 		if (dividedNumber.checkIfNumberIsZero()) {
 			throw new ArithmeticException("A number cant be divided by 0");
 		} else {
-
+			
 		}
 		return newNumber;
 	}
@@ -215,6 +215,24 @@ public class BigInt implements Comparable<BigInt> {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	private int compareAbsoluteValue(BigInt other) {// check which is the bigger absolute value,if they are the same
+		if (this.size() > other.size()) {
+			return 1;
+		} else if (this.size() < other.size()) {
+			return -1;
+		} else {
+			for (int i = 0; i < this.size(); i++) {
+				if (this.number.get(i) > other.number.get(i)) {
+					return 1;
+				}
+				if (this.number.get(i) < other.number.get(i)) {
+					return -1;
+				}
+			}
+			return 0;
 		}
 	}
 
@@ -237,20 +255,33 @@ public class BigInt implements Comparable<BigInt> {
 	}
 
 	public int compareTo(BigInt other) {
-		if (this.size() > other.size())
-			return 1;
-
-		if (this.size() < other.size())
-			return -1;
-		else {
-			for (int i = 0; i < this.size(); i++) {
-				if (this.number.get(i) > other.number.get(i))
-					return 1;
-				if (this.number.get(i) < other.number.get(i))
-					return -1;
-			}
-			return 0;
+		int absoluteValue = this.compareAbsoluteValue(other);
+		int returnValue=0;
+		if (this.multiplyer > other.multiplyer)
+			returnValue= 1;
+		if (this.multiplyer < other.multiplyer)
+			returnValue =1;
+		if (this.multiplyer == other.multiplyer) {
+			if (absoluteValue == 1)
+				returnValue= 1;
+			if (absoluteValue == -1)
+				returnValue= -1;
+			else
+				returnValue= 0;
 		}
+		return returnValue;
 	}
-
+	public String toString() {
+		String returnedString;
+		if (this.multiplyer==1){
+			returnedString="+";
+		}
+		else {
+			returnedString="-";
+		}
+		for(int index=0;index<this.size();index++) {
+			returnedString+=this.number.get(index);
+		}
+		return returnedString;
+	}
 }
