@@ -224,8 +224,8 @@ public class BigInt implements Comparable<BigInt> {
 			}
 
 				while(Temp.compareAbsoluteValue(devided)<=0) {
-					Temp.plus("+1");
-					counter.plus("1")
+					Temp.plus();
+					counter.plus("1");
 					
 				}
 			
@@ -262,7 +262,19 @@ public class BigInt implements Comparable<BigInt> {
 	private int size() {
 		return this.number.size();
 	}
-
+	
+	private static BigInt one() {
+		return new BigInt("+1");
+	}
+	
+	private static BigInt minusOne() {
+		return new BigInt("-1");
+	}
+	
+	private static BigInt zero() {
+		return new BigInt("+0");
+	}
+	
 	public BigInt clone() {
 		BigInt cloneNum;
 		if (this.multiplyer == 1) {
