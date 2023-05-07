@@ -10,10 +10,10 @@ public class SudukoController {
     private Button setButton;
     @FXML
     private GridPane gridBoard;
+    @FXML
+    private Button clearButton;
     private int[][] board;
     private TextField[][] textFields;
-
-
     public SudukoController() {
         gridBoard = new GridPane();
         textFields = new TextField[9][9];
@@ -33,13 +33,12 @@ public class SudukoController {
                 TextField textField = new TextField("0");
                 gridBoard.setConstraints(textField, y, x);
                 gridBoard.add(textField, y, x);
+                textFields[x][y]=textField;
             }
         }
     }
     @FXML
     private void initialize(){
         gridInit();
-        System.out.println("function initalize");
-
     }
 }
