@@ -7,6 +7,6 @@ drink
 rice
 first dish
 30
-cream burla
+cream burle
 last dish
 40

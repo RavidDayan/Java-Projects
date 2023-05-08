@@ -21,16 +21,10 @@ public class MenuItem {
 
     }
     private boolean isLegalCategory(String category){
-        if(category.equals("main dish") || category.equals("first dish") || category.equals("last dish") || category.equals("drink")){
-            return true;
-        }
-        return false;
+        return category.equals("main dish") || category.equals("first dish") || category.equals("last dish") || category.equals("drink");
     }
     private boolean isLegalPrice(double price){
-        if(price>=0){
-            return true;
-        }
-        return false;
+        return price >= 0;
     }
 
     public double getPrice() {

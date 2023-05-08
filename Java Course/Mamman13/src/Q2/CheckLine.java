@@ -1,21 +1,22 @@
+package Q2;
 
 public class CheckLine {
 	//attributes
-	private Item item;
+	private MenuItem item;
 	private double quantity;
 	private double cost;
 	//constructors
-	CheckLine(Item item,double quantity){
+	CheckLine(MenuItem item,double quantity){
 		this.item=item;
 		this.quantity=quantity;
 		this.cost=item.getPrice() * quantity;
 	}
 	//methods
-	public Item getItem() {
+	public MenuItem getItem() {
 		return item;
 	}
 
-	public void setItem(Item item) {
+	public void setItem(MenuItem item) {
 		this.item = item;
 	}
 
