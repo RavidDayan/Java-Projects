@@ -40,7 +40,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="533.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button fx:id="setButton" mnemonicParsing="false" text="set" onAction="#setButtonOnAction" />
-            <Button fx:id="clearButton" mnemonicParsing="false" text="clear" />
+            <Button fx:id="clearButton" mnemonicParsing="false" text="clear" onAction="#clearButtonOnAction"/>
         </buttons>
          <BorderPane.margin>
             <Insets />
