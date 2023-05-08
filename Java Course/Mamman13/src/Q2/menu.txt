@@ -1,0 +1,12 @@
+steak
+main dish
+150
+cola
+drink
+10
+rice
+first dish
+30
+cream burla
+last dish
+40
