@@ -32,6 +32,7 @@ public class SudukoController {
             for (int y = 0; y < 9; y++) {
                 if (this.board.getCell(x, y) != 0) {
                     disableTextField(x, y);
+                    changeTextFieldTextColor(x,y);
                 } else {
                     clearTextField(x, y);
                 }
@@ -100,7 +101,9 @@ public class SudukoController {
     private void disableTextField(int x, int y) {
         this.textFields[x][y].setEditable(false);
     }
-
+    private void changeTextFieldTextColor(int x, int y){
+        this.textFields[x][y].setStyle("-fx-border-color: BLACK; -fx-background-color: RED;");
+    }
     private void enableTextField(int x, int y) {
         this.textFields[x][y].setEditable(true);
     }
@@ -119,18 +122,23 @@ public class SudukoController {
 
     private void colorGrid() {
         boolean color = true;
+        Node cell = null;
         for (int x = 0; x < 9; x++) {
             if (x % 3 != 0) {
                 color = flipColor(color);
             }
             for (int y = 1; y < 10; y++) {
-                if ((y-1) % 3 == 0) {
+                if ((y - 1) % 3 == 0) {
                     color = flipColor(color);
 
                 }
-                if (color == true) {
-                    Node cell = gridBoard.getChildren().get((x * 9) +y);
-                    cell.setStyle("-fx-background-color: lightgrey;");
+                cell = gridBoard.getChildren().get((x * 9) + y);
+
+                if (color) {
+
+                    cell.setStyle("-fx-border-color: black; -fx-background-color: grey;");
+                } else {
+                    cell.setStyle("-fx-border-color: black; -fx-background-color: white;");
                 }
             }
 
