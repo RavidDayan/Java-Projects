@@ -19,12 +19,14 @@ public class SudukoController {
     private Button clearButton;
     private SudukoGame board;
     private TextField[][] textFields;
+
     public SudukoController() {
         gridBoard = new GridPane();
         textFields = new TextField[9][9];
         board = new SudukoGame();
         setButton = new Button();
     }
+
     public void setButtonOnAction() {
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
@@ -36,14 +38,17 @@ public class SudukoController {
             }
         }
     }
+
     public void clearButtonOnAction() {
         clearBoards();
         System.out.println("function clearButtonOnAction");
     }
+
     private void clearBoards() {
         clearTextFields();
         clearNumberBoard();
     }
+
     private void clearTextFields() {
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
@@ -52,24 +57,27 @@ public class SudukoController {
             }
         }
     }
+
     private void clearNumberBoard() {
         board.initBoard();
     }
+
     private void gridInit() {
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
                 TextField textField = new TextField("");
-                initCell(textField,x,y);
-                initTextField(textField,x,y);
-                Node cell = gridBoard.getChildren().get(x*9+y);
-                cell.setStyle("-fx-background-color: grey;");
+                initCell(textField, x, y);
+                initTextField(textField, x, y);
             }
         }
+        colorGrid();
     }
+
     @FXML
     private void initialize() {
         gridInit();
     }
+
     private void addEnterEventListener(int x, int y) {
         this.textFields[x][y].setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
@@ -88,36 +96,70 @@ public class SudukoController {
             }
         });
     }
+
     private void disableTextField(int x, int y) {
         this.textFields[x][y].setEditable(false);
     }
+
     private void enableTextField(int x, int y) {
         this.textFields[x][y].setEditable(true);
     }
+
     private void clearTextField(int x, int y) {
         this.textFields[x][y].setText("");
     }
+
     private void setTextFieldBTransparent(int x, int y) {
         this.textFields[x][y].setStyle("-fx-background-color: transparent;");
     }
+
     private void centerTextFieldText(int x, int y) {
         this.textFields[x][y].setAlignment(Pos.CENTER);
     }
-    private void colorGrid(){
-        Node cell = gridBoard.getChildren().get(0);
-        cell.setStyle("-fx-background-color: red;");
+
+    private void colorGrid() {
+        boolean color = true;
+        for (int x = 0; x < 9; x++) {
+            if (x % 3 != 0) {
+                color = flipColor(color);
+            }
+            for (int y = 1; y < 10; y++) {
+                if ((y-1) % 3 == 0) {
+                    color = flipColor(color);
+
+                }
+                if (color == true) {
+                    Node cell = gridBoard.getChildren().get((x * 9) +y);
+                    cell.setStyle("-fx-background-color: lightgrey;");
+                }
+            }
+
+        }
+//        Node cell = gridBoard.getChildren().get(0 * 9 + 81);
+//        cell.setStyle("-fx-background-color: grey;");
+//        System.out.println("color the grid");
+
     }
-    private void initCell(TextField textField,int x,int y){
+
+    private void initCell(TextField textField, int x, int y) {
         gridBoard.setConstraints(textField, y, x);
         gridBoard.add(textField, y, x);
         textField.setMaxHeight(Double.MAX_VALUE);
         gridBoard.setVgrow(textField, Priority.ALWAYS);
     }
-    private void initTextField(TextField textField,int x,int y){
+
+    private void initTextField(TextField textField, int x, int y) {
         textFields[x][y] = textField;
         setTextFieldBTransparent(x, y);
         addEnterEventListener(x, y);
         centerTextFieldText(x, y);
+    }
+
+    private static boolean flipColor(boolean color) {
+        if (color) {
+            return false;
+        }
+        return true;
     }
 }
 

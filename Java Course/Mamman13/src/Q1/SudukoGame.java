@@ -48,7 +48,7 @@ public class SudukoGame {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (value == board[squareRowStart + i][squareColStart + j]) {
-                    Exception e = new NumberExistsInSquareException(squareRowStart + i+1, squareColStart + j+1);
+                    Exception e = new NumberExistsInSquareException(squareRowStart + i + 1, squareColStart + j + 1);
                     throw e;
                 }
             }
