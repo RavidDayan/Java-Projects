@@ -1,11 +1,39 @@
-steak tartar
-Main
-cola
+Oven brick frena
+Opening
+19
+Soda
 Drink
-10
+9
+Burger 220gr
+Main
+65
+Coca-Cola
+Drink
+14
 rice
 Opening
 30
+Sinia
+Opening
+49
+Orange juice
+Drink
+12
+Salad
+Main
+49
 cream
 Dessert
 40
+Classic shnitzel
+Main
+69
+Steak 300gr
+Main
+150
+Apple sider
+Drink
+14
+French fries
+Opening
+34

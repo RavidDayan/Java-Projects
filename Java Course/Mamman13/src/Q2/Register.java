@@ -19,6 +19,8 @@ public class Register {
     }
 
     //methods
+    public List<MenuItem> getMenu(){return this.menu;}
+
     //add check line item
     public void addItemToPurchase(String itemName, double quantity) {
         int index = existCheckline(itemName);
