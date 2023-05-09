@@ -21,7 +21,7 @@ public class MenuItem {
 
     }
     private boolean isLegalCategory(String category){
-        return category.equals("main dish") || category.equals("first dish") || category.equals("last dish") || category.equals("drink");
+        return category.equals("Main") || category.equals("Opening") || category.equals("Dessert") || category.equals("Drink");
     }
     private boolean isLegalPrice(double price){
         return price >= 0;

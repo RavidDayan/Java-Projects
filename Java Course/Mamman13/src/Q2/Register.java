@@ -1,4 +1,5 @@
 package Q2;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -10,7 +11,7 @@ public class Register {
     private String customerName;
     private int id;
     private List<CheckLine> purchaseList = new LinkedList<>();
-    private static List<MenuItem> storeItemList = new LinkedList<>();
+    private static List<MenuItem> menu = new LinkedList<>();
 
     //constructors
     public Register() {
@@ -22,7 +23,7 @@ public class Register {
     public void addItemToPurchase(String itemName, double quantity) {
         int index = existCheckline(itemName);
         if (index == -1) {
-            CheckLine new_checkline = new CheckLine(storeItemList.get(getItemPlacement(itemName)), quantity);
+            CheckLine new_checkline = new CheckLine(menu.get(getItemPlacement(itemName)), quantity);
             this.purchaseList.add(new_checkline);
         } else {
             this.purchaseList.get(index).updateCheckLine(quantity);
@@ -55,7 +56,7 @@ public class Register {
     }
 
     public static void printStoreItems() {
-        for (MenuItem item : storeItemList) {
+        for (MenuItem item : menu) {
             printItemDetails(item);
         }
     }
@@ -66,20 +67,37 @@ public class Register {
 
     private static int getItemPlacement(String itemName) {
         int itemPlace = -1;
-        for (MenuItem item : storeItemList) {
+        for (MenuItem item : menu) {
             if (item.getName().equals(itemName)) {
-                itemPlace = storeItemList.indexOf(item);
+                itemPlace = menu.indexOf(item);
                 break;
             }
         }
         return itemPlace;
     }
 
-    public void uploadMenu() throws FileNotFoundException {
+    public void uploadMenu() throws FileNotFoundException,IlegalCategoryException,IlegalPriceException {
+        System.out.println("function upload menu");
         Scanner input = new Scanner(new File("src/Q2/menu.txt"));
+        int counter = -1;
+        MenuItem item;
+        String name="";
+        String category="";
+        double price;
         while (input.hasNext()) {
-            String st = input.next();
-            System.out.println(st);
+            counter++;
+            if (counter == 0) {
+                name = input.nextLine();
+            }
+            if (counter == 1) {
+                category = input.nextLine();
+            }
+            if (counter == 2) {
+                price = Double.valueOf(input.nextLine());
+                System.out.println(name + " " + category+" " + price);
+                counter=-1;
+                menu.add(new MenuItem(name,category,price));
+            }
         }
     }
 }

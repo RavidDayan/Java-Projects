@@ -1,12 +1,11 @@
-steak
-main dish
-150
+steak tartar
+Main
 cola
-drink
+Drink
 10
 rice
-first dish
+Opening
 30
-cream burle
-last dish
+cream
+Dessert
 40

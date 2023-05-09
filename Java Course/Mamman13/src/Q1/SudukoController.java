@@ -180,14 +180,16 @@ public class SudukoController {
         centerTextFieldText(x, y);
         textField.setMaxHeight(Double.MAX_VALUE);
     }
-//flips the value of boolean received and returns the opposite boolean
+
+    //flips the value of boolean received and returns the opposite boolean
     private static boolean flipColor(boolean color) {
         if (color) {
             return false;
         }
         return true;
     }
-//refreshes the text-field to show their assigned value if it exists
+
+    //refreshes the text-field to show their assigned value if it exists
     private void refreshTextFieldBoard() {
         for (int x = 0; x < 9; x++) {
             for (int y = 0; y < 9; y++) {
