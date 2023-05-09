@@ -13,6 +13,7 @@ import javafx.scene.text.FontWeight;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MenuController {
@@ -21,6 +22,7 @@ public class MenuController {
     public Button orderButton;
     @FXML
     private GridPane orderGrid;
+    private ArrayList<ArrayList<Object>> orderObjectGrid = new ArrayList();
     @FXML
     public Label priceLabel;
     @FXML
@@ -40,7 +42,6 @@ public class MenuController {
         priceLabel = new Label();
 
     }
-
     @FXML
     private void initialize() {
         loadMenuToDB();
@@ -119,11 +120,12 @@ public class MenuController {
 
     private void insertItemToGrid(MenuItem item, int index) {
         Label itemName = new Label(item.getName());
-        itemName.setAlignment(Pos.CENTER);
+        ComboBox<Integer> priceComboBox = createQuantityComboBox();
         Label itemPrice = new Label(String.valueOf(item.getPrice()));
-        itemPrice.setAlignment(Pos.CENTER);
         CheckBox addItem = new CheckBox();
-        orderGrid.addRow(index, itemName, createQuantityComboBox(), itemPrice, addItem);
+        orderGrid.addRow(index, itemName, priceComboBox, itemPrice, addItem);
+        insertItemToObjectGrid(itemName, priceComboBox, itemPrice, addItem);
+
     }
 
     private static ComboBox<Integer> createQuantityComboBox() {
@@ -132,21 +134,46 @@ public class MenuController {
         comboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         return comboBox;
     }
-    private void addCategoryTitle(String title){
-        Label titleLabel=new Label(title);
-        Label emptyLabel=new Label();
+
+    private void addCategoryTitle(String title) {
+        Label titleLabel = new Label(title);
+        Label emptyLabel = new Label();
         titleLabel.setFont(new Font("Arial", 20));
-        int index=gridSize(orderGrid) + 1;
-        orderGrid.addRow(index, titleLabel,new Label(),new Label(),new Label());
+        int index = gridSize(orderGrid) + 1;
+        orderGrid.addRow(index, titleLabel, new Label(), new Label(), new Label());
     }
-    private void addEmptyRow(){
-        int index=gridSize(orderGrid) + 1;
-        orderGrid.addRow(index, new Label(),new Label(),new Label(),new Label());
+
+    private void addEmptyRow() {
+        int index = gridSize(orderGrid) + 1;
+        orderGrid.addRow(index, new Label(), new Label(), new Label(), new Label());
     }
+
+    private void addItemsCheckLine() {
+        List<Node> gridChildren = orderGrid.getChildren();
+        for (int i = 0; i <= gridSize(orderGrid); i++) {
+            if () {
+
+            }
+        }
+    }
+
+    private void insertItemToObjectGrid(Label itemName, ComboBox comboBox, Label itemPrice, CheckBox addItem) {
+        ArrayList<Object> InnerArray = new ArrayList<>();
+        InnerArray.add(itemName);
+        InnerArray.add(comboBox);
+        InnerArray.add(itemPrice);
+        InnerArray.add(addItem);
+        orderObjectGrid.add(InnerArray);
+
+    }
+
     private static int gridSize(GridPane grid) {
         int size;
         size = grid.getChildren().size() / 3;
         return size;
+    }
+    public void addButtonOnAction() {
+
     }
 }
 
