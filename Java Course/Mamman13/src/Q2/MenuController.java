@@ -17,16 +17,21 @@ import java.util.List;
 
 public class MenuController {
     private Register register;
+    private static boolean initiated=false;
     Stage orderStage;
     @FXML
     public Button orderButton;
     @FXML
     private GridPane menuGrid;
+    @FXML
+    private static GridPane staticOrderGrid;
+    @FXML
+    private static Label StaticpriceLabel;
     private double totalOrderPrice;
     private ArrayList<ArrayList<Object>> orderObjectGrid;
-    @FXML
+
     private GridPane orderGrid;
-    @FXML
+
     public Label priceLabel;
     @FXML
     public Button confirmButton;
@@ -37,15 +42,7 @@ public class MenuController {
 
     @FXML
     private void cancelButtonOnAction() {
-        uploadOrder();
-        setTotalOrderPrice();
-        orderStage = new Stage();
-        try {
-            startOrder(orderStage);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println("cancel button function");
+        System.out.println("cancel");
     }
 
     public MenuController() {
@@ -57,6 +54,9 @@ public class MenuController {
         confirmButton = new Button();
         updateButton = new Button();
         cancelButton = new Button();
+        orderGrid = new GridPane();
+         staticOrderGrid = new GridPane();
+        StaticpriceLabel=new Label("tryout");
     }
 
     private void setTotalOrderPrice() {
@@ -67,8 +67,8 @@ public class MenuController {
     private void initialize() {
         loadMenuToDB();
         addMenuToMenuGrid();
-        setTotalOrderPrice();
-        uploadOrder();
+        loadOrder();
+        System.out.println("done");
     }
 
     private void loadMenuToDB() {
@@ -103,7 +103,7 @@ public class MenuController {
         for (int i = 0; i < menu.size(); i++) {
             item = menu.get(i);
             if (item.getCategory().equals("Main")) {
-                insertItemToMenuGrid(item, gridSize(menuGrid) + 1);
+                insertItemToMenuGrid(item, menuGridSize(menuGrid) + 1);
             }
         }
     }
@@ -114,7 +114,7 @@ public class MenuController {
         for (int i = 0; i < menu.size(); i++) {
             item = menu.get(i);
             if (item.getCategory().equals("Opening")) {
-                insertItemToMenuGrid(item, gridSize(menuGrid) + 1);
+                insertItemToMenuGrid(item, menuGridSize(menuGrid) + 1);
             }
         }
     }
@@ -125,7 +125,7 @@ public class MenuController {
         for (int i = 0; i < menu.size(); i++) {
             item = menu.get(i);
             if (item.getCategory().equals("Dessert")) {
-                insertItemToMenuGrid(item, gridSize(menuGrid) + 1);
+                insertItemToMenuGrid(item, menuGridSize(menuGrid) + 1);
             }
         }
     }
@@ -136,7 +136,7 @@ public class MenuController {
         for (int i = 0; i < menu.size(); i++) {
             item = menu.get(i);
             if (item.getCategory().equals("Drink")) {
-                insertItemToMenuGrid(item, gridSize(menuGrid) + 1);
+                insertItemToMenuGrid(item, menuGridSize(menuGrid) + 1);
             }
         }
     }
@@ -154,7 +154,7 @@ public class MenuController {
     private static ComboBox<Integer> createQuantityComboBox() {
         ComboBox<Integer> comboBox = new ComboBox<>();
         comboBox.setValue(0);
-        comboBox.getItems().addAll(0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        comboBox.getItems().addAll(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         return comboBox;
     }
 
@@ -162,12 +162,12 @@ public class MenuController {
         Label titleLabel = new Label(title);
         Label emptyLabel = new Label();
         titleLabel.setFont(new Font("Arial", 20));
-        int index = gridSize(menuGrid) + 1;
+        int index = menuGridSize(menuGrid) + 1;
         menuGrid.addRow(index, titleLabel, new Label(), new Label(), new Label());
     }
 
     private void addEmptyRow() {
-        int index = gridSize(menuGrid) + 1;
+        int index = menuGridSize(menuGrid) + 1;
         menuGrid.addRow(index, new Label(), new Label(), new Label(), new Label());
     }
 
@@ -180,7 +180,13 @@ public class MenuController {
         orderObjectGrid.add(InnerArray);
     }
 
-    private static int gridSize(GridPane grid) {
+    private static int menuGridSize(GridPane grid) {
+        int size;
+        size = grid.getChildren().size() / 4;
+        return size;
+    }
+
+    private static int orderGridSize(GridPane grid) {
         int size;
         size = grid.getChildren().size() / 3;
         return size;
@@ -188,10 +194,11 @@ public class MenuController {
 
     @FXML
     private void orderButtonOnAction() throws Exception {
+        uploadOrder();
+        staticOrderGrid=orderGrid;
+        StaticpriceLabel=priceLabel;
         orderStage = new Stage();
         startOrder(orderStage);
-        uploadOrder();
-
     }
 
     public void startOrder(Stage stage) throws Exception {
@@ -204,28 +211,27 @@ public class MenuController {
     }
 
     private void uploadOrder() {
-        orderGrid = new GridPane();
-        totalOrderPrice = 0;
         Label itemName;
         ComboBox comboBox;
         Label itemPrice;
         CheckBox addItem;
         for (ArrayList<Object> orderRow : orderObjectGrid) {
             addItem = (CheckBox) orderRow.get(3);
+            System.out.println(addItem.isSelected());
             if (addItem.isSelected()) {
-
                 itemName = new Label(((Label) orderRow.get(0)).getText());
                 comboBox = new ComboBox();
-                comboBox.setValue(((ComboBox)orderRow.get(1)).getValue());
+                comboBox.setValue(((ComboBox) orderRow.get(1)).getValue());
                 itemPrice = new Label(((Label) orderRow.get(2)).getText());
                 insetItemToOrderGrid(itemName, comboBox, itemPrice);
-                System.out.println("uploadeditems");
             }
         }
+        setTotalOrderPrice();
+        System.out.println("ended function uploadOrder");
     }
 
     private void insetItemToOrderGrid(Label itemName, ComboBox<Integer> itemQuantity, Label itemPrice) {
-        int index = gridSize(orderGrid) + 1;
+        int index = orderGridSize(orderGrid) + 1;
         String itemQuantityBought = String.valueOf(itemQuantity.getValue());
         Label Quantity = new Label(itemQuantityBought);
         Label totalItemPrice = new Label(itemTotalPrice(itemQuantity, itemPrice));
@@ -240,6 +246,10 @@ public class MenuController {
         String stringTotalPrice = String.valueOf(totalPrice);
         return stringTotalPrice;
 
+    }
+    private void loadOrder(){
+        this.orderGrid=staticOrderGrid;
+        this.priceLabel=StaticpriceLabel;
     }
 }
 

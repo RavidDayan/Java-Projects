@@ -56,17 +56,6 @@ public class Register {
     private String ChecklineOrganizer(String name, double quantity, double cost) {
         return "item name: " + name + " quantity: " + quantity + " cost: " + cost + System.lineSeparator();
     }
-
-    public static void printStoreItems() {
-        for (MenuItem item : menu) {
-            printItemDetails(item);
-        }
-    }
-
-    private static void printItemDetails(MenuItem item) {
-        System.out.println(item.getName() + " price:" + item.getPrice());
-    }
-
     private static int getItemPlacement(String itemName) {
         int itemPlace = -1;
         for (MenuItem item : menu) {
@@ -79,7 +68,6 @@ public class Register {
     }
 
     public void uploadMenu() throws FileNotFoundException,IlegalCategoryException,IlegalPriceException {
-        System.out.println("function upload menu");
         Scanner input = new Scanner(new File("src/Q2/menu.txt"));
         int counter = -1;
         MenuItem item;
@@ -96,7 +84,6 @@ public class Register {
             }
             if (counter == 2) {
                 price = Double.valueOf(input.nextLine());
-                System.out.println(name + " " + category+" " + price);
                 counter=-1;
                 menu.add(new MenuItem(name,category,price));
             }
