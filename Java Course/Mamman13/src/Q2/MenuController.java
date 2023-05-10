@@ -23,8 +23,7 @@ public class MenuController {
     @FXML
     private GridPane menuGrid;
     private double totalOrderPrice;
-    private ArrayList<ArrayList<Object>> orderObjectGrid = new ArrayList();
-
+    private ArrayList<ArrayList<Object>> orderObjectGrid;
     @FXML
     private GridPane orderGrid;
     @FXML
@@ -35,12 +34,32 @@ public class MenuController {
     public Button updateButton;
     @FXML
     public Button cancelButton;
+
     @FXML
     private void cancelButtonOnAction() {
+        uploadOrder();
+        setTotalOrderPrice();
+        orderStage = new Stage();
+        try {
+            startOrder(orderStage);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("cancel button function");
     }
 
-    private void setTotalOrderPrice(double totalOrderPrice) {
+    public MenuController() {
+        register = new Register();
+        orderButton = new Button();
+        menuGrid = new GridPane();
+        orderObjectGrid = new ArrayList<>();
+        priceLabel = new Label();
+        Button confirmButton = new Button();
+        Button updateButton = new Button();
+        cancelButton = new Button();
+    }
+
+    private void setTotalOrderPrice() {
         priceLabel.setText(String.valueOf(totalOrderPrice));
     }
 
