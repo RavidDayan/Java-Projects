@@ -37,6 +37,7 @@ public class Data {
     }
 
     public GridPane getOrderGrid() {
+        setTotalOrderPrice();
         uploadOrder();
         return this.orderGrid;
     }
@@ -175,6 +176,8 @@ public class Data {
     }
 
     public void uploadOrder() {
+        orderGrid=new GridPane();
+        totalOrderPrice=0;
         Label itemName;
         ComboBox comboBox;
         Label itemPrice;
@@ -190,7 +193,6 @@ public class Data {
                 insetItemToOrderGrid(itemName, comboBox, itemPrice);
             }
         }
-        setTotalOrderPrice();
     }
 
     private void insetItemToOrderGrid(Label itemName, ComboBox<Integer> itemQuantity, Label itemPrice) {

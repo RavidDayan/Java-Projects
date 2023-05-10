@@ -35,8 +35,6 @@ public class OrderController {
 
     public OrderController() {
         data=Data.getData();
-        orderGrid=data.getOrderGrid();
-        priceLabel = new Label();
         confirmButton = new Button();
         updateButton = new Button();
         cancelButton = new Button();
@@ -44,8 +42,20 @@ public class OrderController {
 
     @FXML
     private void initialize() {
+        hardCopy();
         updatePriceLabel();
         System.out.println("initialize function");
+    }
+    private void hardCopy() {
+        int numRows = (Data.getData().getOrderGrid().getChildren().size() / 3) - 1;
+        int numCols = 3;
+        for (int row = numRows; row >= 0; row--) {
+            for (int col = 2; col >= 0; col--) {
+                Node node = data.getOrderGrid().getChildren().get(row * numCols + col);
+                orderGrid.add(node, col, row);
+            }
+        }
+        System.out.println(data.getOrderGrid().getChildren());
     }
     private void updatePriceLabel(){
        String price= data.getPriceLabel().getText();
