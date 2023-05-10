@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class Restaurant extends Application {
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Order.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Ravid's Restaurant");
         stage.setScene(scene);

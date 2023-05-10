@@ -42,7 +42,9 @@ public class MenuController {
 
     @FXML
     private void cancelButtonOnAction() {
+        loadOrder();
         System.out.println("cancel");
+
     }
 
     public MenuController() {
@@ -67,8 +69,6 @@ public class MenuController {
     private void initialize() {
         loadMenuToDB();
         addMenuToMenuGrid();
-        loadOrder();
-        System.out.println("done");
     }
 
     private void loadMenuToDB() {
