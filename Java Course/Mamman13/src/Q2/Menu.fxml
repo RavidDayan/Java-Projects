@@ -52,7 +52,7 @@
             </ScrollPane>
             <HBox alignment="CENTER" prefHeight="91.0" prefWidth="366.0">
                <children>
-                  <Button fx:id="orderButton" mnemonicParsing="false" onAction="#orderButtonOnAction" text="order" />
+                  <Button fx:id="orderButton" mnemonicParsing="false" text="order" />
                </children>
             </HBox>
          </children>

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Q2.MenuController">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Q2.OrderController">
    <center>
       <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="273.0" prefWidth="366.0">
          <children>
@@ -38,7 +38,7 @@
             </AnchorPane>
             <ScrollPane prefHeight="203.0" prefWidth="366.0">
                <content>
-                  <GridPane fx:id="staticOrderGrid" prefHeight="24.0" prefWidth="366.0">
+                  <GridPane fx:id="orderGrid" prefHeight="24.0" prefWidth="366.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -53,7 +53,7 @@
             <HBox alignment="CENTER" prefHeight="74.0" prefWidth="366.0">
                <children>
                   <Label text="Total order price :" />
-                  <Label fx:id="StaticpriceLabel" text="">
+                  <Label fx:id="priceLabel" text="">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
