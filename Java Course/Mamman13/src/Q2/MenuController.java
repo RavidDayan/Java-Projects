@@ -17,20 +17,31 @@ import java.util.List;
 
 public class MenuController {
     private Register register;
-    Stage orderStage ;
+    Stage orderStage;
     @FXML
     public Button orderButton;
     @FXML
     private GridPane menuGrid;
-
-    private GridPane orderGrid;
     private double totalOrderPrice;
     private ArrayList<ArrayList<Object>> orderObjectGrid = new ArrayList();
 
-    public MenuController() {
-        register = new Register();
-        menuGrid = new GridPane();
-        orderButton = new Button();
+    @FXML
+    private GridPane orderGrid;
+    @FXML
+    public Label priceLabel;
+    @FXML
+    public Button confirmButton;
+    @FXML
+    public Button updateButton;
+    @FXML
+    public Button cancelButton;
+    @FXML
+    private void cancelButtonOnAction() {
+        System.out.println("cancel button function");
+    }
+
+    private void setTotalOrderPrice(double totalOrderPrice) {
+        priceLabel.setText(String.valueOf(totalOrderPrice));
     }
 
     @FXML
@@ -161,6 +172,7 @@ public class MenuController {
         startOrder(orderStage);
 
     }
+
     public void startOrder(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("order.fxml"));
         Scene scene = new Scene(root);
@@ -172,7 +184,7 @@ public class MenuController {
 
     private void uploadOrder() {
         orderGrid = new GridPane();
-        totalOrderPrice=0;
+        totalOrderPrice = 0;
         Label itemName;
         ComboBox comboBox;
         Label itemPrice;
@@ -201,7 +213,7 @@ public class MenuController {
         double quantity = itemQuantity.getValue();
         double price = Double.valueOf(itemPrice.getText());
         double totalPrice = quantity * price;
-        totalOrderPrice+=totalPrice;
+        totalOrderPrice += totalPrice;
         String stringTotalPrice = String.valueOf(totalPrice);
         return stringTotalPrice;
 
