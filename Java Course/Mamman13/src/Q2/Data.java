@@ -21,7 +21,7 @@ public class Data {
     private Data() {
         register = new Register();
         orderObjectGrid = new ArrayList<>();
-        menuGrid=new GridPane();
+        menuGrid = new GridPane();
         priceLabel = new Label();
         orderGrid = new GridPane();
         loadMenuToDB();
@@ -35,7 +35,9 @@ public class Data {
         }
         return data;
     }
-    public GridPane getOrderGrid(){
+
+    public GridPane getOrderGrid() {
+        uploadOrder();
         return this.orderGrid;
     }
 
@@ -172,7 +174,7 @@ public class Data {
         return size;
     }
 
-    private void uploadOrder() {
+    public void uploadOrder() {
         Label itemName;
         ComboBox comboBox;
         Label itemPrice;
@@ -189,7 +191,6 @@ public class Data {
             }
         }
         setTotalOrderPrice();
-        System.out.println("ended function uploadOrder");
     }
 
     private void insetItemToOrderGrid(Label itemName, ComboBox<Integer> itemQuantity, Label itemPrice) {
@@ -209,4 +210,5 @@ public class Data {
         return stringTotalPrice;
 
     }
+
 }

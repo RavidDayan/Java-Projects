@@ -53,7 +53,7 @@
             <HBox alignment="CENTER" prefHeight="74.0" prefWidth="366.0">
                <children>
                   <Label text="Total order price :" />
-                  <Label fx:id="priceLabel" text="">
+                  <Label fx:id="priceLabel">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>

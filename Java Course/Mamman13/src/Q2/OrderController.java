@@ -36,7 +36,7 @@ public class OrderController {
     public OrderController() {
         data=Data.getData();
         orderGrid=data.getOrderGrid();
-        priceLabel = data.getPriceLabel();
+        priceLabel = new Label();
         confirmButton = new Button();
         updateButton = new Button();
         cancelButton = new Button();
@@ -44,6 +44,12 @@ public class OrderController {
 
     @FXML
     private void initialize() {
+        updatePriceLabel();
+        System.out.println("initialize function");
+    }
+    private void updatePriceLabel(){
+       String price= data.getPriceLabel().getText();
+        priceLabel.setText(price);
     }
 
 }
