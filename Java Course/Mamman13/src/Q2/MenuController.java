@@ -54,8 +54,8 @@ public class MenuController {
         menuGrid = new GridPane();
         orderObjectGrid = new ArrayList<>();
         priceLabel = new Label();
-        Button confirmButton = new Button();
-        Button updateButton = new Button();
+        confirmButton = new Button();
+        updateButton = new Button();
         cancelButton = new Button();
     }
 
@@ -67,6 +67,8 @@ public class MenuController {
     private void initialize() {
         loadMenuToDB();
         addMenuToMenuGrid();
+        setTotalOrderPrice();
+        uploadOrder();
     }
 
     private void loadMenuToDB() {
@@ -152,7 +154,7 @@ public class MenuController {
     private static ComboBox<Integer> createQuantityComboBox() {
         ComboBox<Integer> comboBox = new ComboBox<>();
         comboBox.setValue(0);
-        comboBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        comboBox.getItems().addAll(0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         return comboBox;
     }
 
@@ -186,9 +188,9 @@ public class MenuController {
 
     @FXML
     private void orderButtonOnAction() throws Exception {
-        uploadOrder();
         orderStage = new Stage();
         startOrder(orderStage);
+        uploadOrder();
 
     }
 
@@ -211,9 +213,11 @@ public class MenuController {
         for (ArrayList<Object> orderRow : orderObjectGrid) {
             addItem = (CheckBox) orderRow.get(3);
             if (addItem.isSelected()) {
-                itemName = (Label) orderRow.get(0);
-                comboBox = (ComboBox) orderRow.get(1);
-                itemPrice = (Label) orderRow.get(2);
+
+                itemName = new Label(((Label) orderRow.get(0)).getText());
+                comboBox = new ComboBox();
+                comboBox.setValue(((ComboBox)orderRow.get(1)).getValue());
+                itemPrice = new Label(((Label) orderRow.get(2)).getText());
                 insetItemToOrderGrid(itemName, comboBox, itemPrice);
                 System.out.println("uploadeditems");
             }
