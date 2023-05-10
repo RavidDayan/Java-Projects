@@ -26,23 +26,11 @@ public class MenuController {
     private GridPane orderGrid;
     private double totalOrderPrice;
     private ArrayList<ArrayList<Object>> orderObjectGrid = new ArrayList();
-    @FXML
-    public Label priceLabel;
-    @FXML
-    public Button confirmButton;
-    @FXML
-    public Button updateButton;
-    @FXML
-    public Button cancelButton;
 
     public MenuController() {
         register = new Register();
         menuGrid = new GridPane();
         orderButton = new Button();
-        confirmButton = new Button();
-        updateButton = new Button();
-        cancelButton = new Button();
-        priceLabel = new Label();
     }
 
     @FXML
@@ -169,7 +157,6 @@ public class MenuController {
     @FXML
     private void orderButtonOnAction() throws Exception {
         uploadOrder();
-        setTotalOrderPrice();
         orderStage = new Stage();
         startOrder(orderStage);
 
@@ -218,9 +205,6 @@ public class MenuController {
         String stringTotalPrice = String.valueOf(totalPrice);
         return stringTotalPrice;
 
-    }
-    private void setTotalOrderPrice(){
-        priceLabel.setText(String.valueOf(totalOrderPrice));
     }
 }
 
