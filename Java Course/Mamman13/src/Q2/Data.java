@@ -49,7 +49,9 @@ public class Data {
     public GridPane getMenuGrid() {
         return menuGrid;
     }
-
+    public ArrayList<ArrayList<Object>> getOrderObjects(){
+        return orderObjectGrid;
+    }
     private void setTotalOrderPrice() {
         priceLabel.setText(String.valueOf(totalOrderPrice));
     }
@@ -184,7 +186,6 @@ public class Data {
         CheckBox addItem;
         for (ArrayList<Object> orderRow : orderObjectGrid) {
             addItem = (CheckBox) orderRow.get(3);
-            System.out.println(addItem.isSelected());
             if (addItem.isSelected()) {
                 itemName = new Label(((Label) orderRow.get(0)).getText());
                 comboBox = new ComboBox();
@@ -210,7 +211,6 @@ public class Data {
         totalOrderPrice += totalPrice;
         String stringTotalPrice = String.valueOf(totalPrice);
         return stringTotalPrice;
-
     }
 
 }
