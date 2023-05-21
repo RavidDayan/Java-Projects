@@ -42,7 +42,7 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
         return 0;
     }
 
-    private class GroupIterator<T> implements Iterator {
+    private class GroupIterator<T> implements Iterator<T> {
         private int index;
 
         public GroupIterator() {

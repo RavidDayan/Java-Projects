@@ -5,14 +5,16 @@ public class Student implements Comparable<Student> {
     private int id;
     private int grade;
 
-    public Student(String name,int id,int grade){
-      this.name=name;
-      if(isValidId(id)){
-          this.id=id;
-      }
-
-        this.grade=grade;
-
+    public Student(String name, int id, int grade) throws IlegalIdException, IlegalGradeException {
+        if (!isValidId(id)) {
+            throw new IlegalIdException();
+        }
+        if (!isValidGrade(grade)) {
+            throw new IlegalGradeException();
+        }
+        this.name = name;
+        this.id = id;
+        this.grade = grade;
     }
 
     @Override
@@ -25,8 +27,12 @@ public class Student implements Comparable<Student> {
         }
         return 0;
     }
-    private boolean isValidId(int id){
-        return id>=0 && id<=999999999;
+
+    private boolean isValidId(int id) {
+        return id >= 0 && id <= 999999999;
+    }
+    private boolean isValidGrade(int grade) {
+        return grade >= 0 && grade <= 100;
     }
 
     @Override
