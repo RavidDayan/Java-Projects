@@ -14,4 +14,11 @@ public class Student implements Comparable<Student> {
         }
         return 0;
     }
+
+    @Override
+    public String toString() {
+        String returnedString;
+        returnedString=name+" "+String.valueOf(grade);
+        return returnedString;
+    }
 }
