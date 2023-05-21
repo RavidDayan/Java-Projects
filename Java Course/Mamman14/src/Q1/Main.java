@@ -11,7 +11,16 @@ public class  Main <T extends Comparable<T>>{
         }
         return newArray;
     }
+    private void generateStudents(SortedGroup<Student> studentList) throws IlegalIdException, IlegalGradeException {
+        studentList.add(new Student("Ravid",123456789,90));
+        studentList.add(new Student("shmuel",353446717,80));
+        studentList.add(new Student("levi",123456789,70));
+        studentList.add(new Student("moshe",123456789,60));
+        studentList.add(new Student("yakov",123456789,50));
+        studentList.add(new Student("mordechai",123456789,40));
+
+    }
     public static void main(String[] args){
-        System.out.println("hellow");
+
     }
 }
