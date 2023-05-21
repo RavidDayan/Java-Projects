@@ -6,7 +6,12 @@ public class Student implements Comparable<Student> {
     private int grade;
 
     public Student(String name,int id,int grade){
-      this.grade=grade;
+      this.name=name;
+      if(isValidId(id)){
+          this.id=id;
+      }
+
+        this.grade=grade;
 
     }
 
@@ -19,6 +24,9 @@ public class Student implements Comparable<Student> {
             return -1;
         }
         return 0;
+    }
+    private boolean isValidId(int id){
+        return id>=0 && id<=999999999;
     }
 
     @Override
