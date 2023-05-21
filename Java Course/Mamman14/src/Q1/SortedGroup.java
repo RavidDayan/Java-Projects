@@ -4,14 +4,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class SortedGroup<T> implements Comparable<T>, Iterable<T> {
+public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
     private ArrayList<T> array;
 
     public SortedGroup() {
         array = new ArrayList<>();
     }
 
-    public void add(T object) {
+    public void add(T newObject) {
+        for (int i = 0; i < array.size(); i++) {
+            if (newObject.compareTo(array.get(i)) == 0 || newObject.compareTo(array.get(i)) == -1) {
+                array.add(i, newObject);
+                break;
+            }
+            array.add(newObject);
+        }
 
     }
 
@@ -30,8 +37,8 @@ public class SortedGroup<T> implements Comparable<T>, Iterable<T> {
         return new GroupIterator<T>();
     }
 
-    @Override
-    public int compareTo(T o) {
+
+    public int compareTo(T other) {
         return 0;
     }
 
