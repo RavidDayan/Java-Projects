@@ -5,23 +5,26 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
-    private ArrayList<T> array;
+    private ArrayList<T> array;//array the will store the objects of the group
 
-    public SortedGroup() {
+    public SortedGroup() {//constructor
         array = new ArrayList<>();
     }
 
-    public void add(T newObject) {
-        if (array.size() == 0) {
+    public void add(T newObject) {//adds new object to group and sorts it
+        boolean isNotAdded=true;
+        if (array.size() == 0) {//if there are no objects inserts it to end of list(which is still the first item in group)
             array.add(newObject);
         } else {
-            for (int i = 0; i < array.size(); i++) {
+            for (int i = 0; i < array.size(); i++) {//
                 if (newObject.compareTo(array.get(i)) == 0 || newObject.compareTo(array.get(i)) == -1) {
                     array.add(i, newObject);
+                    isNotAdded=false;
                     break;
                 }
+            }
+            if (isNotAdded){
                 array.add(newObject);
-                break;
             }
         }
 
@@ -60,13 +63,13 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            return index <array.size();
+            return index < array.size();
         }
 
         @Override
         public T next() {
             if (hasNext()) {
-                T object=group.array.get(index);
+                T object = group.array.get(index);
                 index++;
                 return object;
 
