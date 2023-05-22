@@ -35,15 +35,20 @@ public class Student implements Comparable<Student> {
     private boolean isValidGrade(int grade) {
         return grade >= 0 && grade <= 100;
     }
-
-    public boolean equals(Student other) {
-        return this.id==other.id && this.name.equals(other.name);
+    @Override
+    public boolean equals(Object other) {
+        if (other instanceof Student ){
+            return this.id == ((Student) other).id && this.name.equals(((Student) other).name);
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
     public String toString() {
         String returnedString;
-        returnedString = "Name: " + name + " Id: " + String.valueOf(id);
+        returnedString = "Name: " + name + " Id: " + String.valueOf(id)+ " Grade: " + String.valueOf(grade);
         return returnedString;
     }
 }

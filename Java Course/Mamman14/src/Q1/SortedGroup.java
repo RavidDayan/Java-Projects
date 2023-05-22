@@ -21,6 +21,7 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
                     break;
                 }
                 array.add(newObject);
+                break;
             }
         }
 
