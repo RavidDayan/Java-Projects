@@ -12,15 +12,25 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="138.0" prefWidth="403.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReminderController">
    <center>
-      <VBox alignment="CENTER" prefHeight="230.0" prefWidth="455.0" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" prefHeight="181.0" prefWidth="405.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="Calender reminder" textAlignment="CENTER" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
                <children>
-                  <ComboBox fx:id="dayComboBox" prefWidth="150.0" promptText="day" />
-                  <ComboBox fx:id="monthComboBox" prefWidth="150.0" promptText="month" />
-                  <ComboBox fx:id="yearComboBox" prefWidth="150.0" promptText="Year" />
+                  <Label text="Day" />
+                  <Label text="Month" />
+                  <Label text="Year" />
                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ComboBox fx:id="dayComboBox" prefWidth="150.0" />
+                  <ComboBox fx:id="monthComboBox" prefWidth="150.0" />
+                  <ComboBox fx:id="yearComboBox" prefWidth="150.0" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>

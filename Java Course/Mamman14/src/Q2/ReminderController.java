@@ -6,7 +6,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ReminderController {
     private HashMap<LocalDate,String> notes;
@@ -23,7 +25,26 @@ public class ReminderController {
     @FXML
     private TextField noteTextField;
 
-
+    private static List<Integer> generateYears(){
+        List<Integer> years = new ArrayList<>();
+        for (int year = 1970; year <=2023 ; year++) {
+            years.add(year);
+        }
+        return years;
+    }
+    private static List<Integer> generateDays(){
+        List<Integer> years = new ArrayList<>();
+        for (int year = 1970; year <=2023 ; year++) {
+            years.add(year);
+        }
+        return years;
+    }
+    private static List<Integer> generateMonths(){
+        List<Integer> years = new ArrayList<>();
+        for (int year = 1970; year <=2023 ; year++) {
+            years.add(year);
+        }
+        return years;
     }
 }
 
