@@ -2,6 +2,7 @@ package Q2;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -56,13 +57,12 @@ public class ReminderController {
 
     @FXML
     private void showButtonAction() {
-        if(NoteExist()){
-            String note= notes.get(getDate());
+        if (NoteExist()) {
+            String note = notes.get(getDate());
             noteTextField.setText(note);
-        }
-        else{
-            String note= "";
-            noteTextField.setText(note);
+        } else {
+            noNoteExistsPopUp();
+            clearNoteTextField();
         }
     }
 
@@ -70,6 +70,7 @@ public class ReminderController {
         if (isDateValid()) {
             return notes.containsKey(getDate());
         }
+
         return false;
     }
 
@@ -79,9 +80,33 @@ public class ReminderController {
             LocalDate date = getDate();
             String note = noteTextField.getText();
             notes.put(date, note);
-        } else {
-            System.out.println("no data to save");
+            noteSavedPopUp();
+            clearNoteTextField();
         }
+    }
+
+    private void invalidDatePopUp() {
+        Alert popUp = new Alert(Alert.AlertType.INFORMATION);
+        popUp.setTitle("Illegal date ");
+        popUp.setHeaderText(null);
+        popUp.setContentText("Date does not exist,please enter different date.");
+        popUp.showAndWait();
+    }
+
+    private void noteSavedPopUp() {
+        Alert popUp = new Alert(Alert.AlertType.INFORMATION);
+        popUp.setTitle("Note saved ");
+        popUp.setHeaderText(null);
+        popUp.setContentText("the note has been successfully saved.");
+        popUp.showAndWait();
+    }
+
+    private void noNoteExistsPopUp() {
+        Alert popUp = new Alert(Alert.AlertType.INFORMATION);
+        popUp.setTitle("No note for date");
+        popUp.setHeaderText(null);
+        popUp.setContentText("There is no Note for specified date.");
+        popUp.showAndWait();
     }
 
     @FXML
@@ -102,8 +127,13 @@ public class ReminderController {
             LocalDate.of(year, month, day);
             return true;
         } catch (Exception e) {
+            invalidDatePopUp();
             return false;
         }
+    }
+
+    private void clearNoteTextField() {
+        noteTextField.setText("");
     }
 
     private LocalDate getDate() {
@@ -112,7 +142,6 @@ public class ReminderController {
         int day = dayComboBox.getValue();
         return LocalDate.of(year, month, day);
     }
-
 
 
 }
