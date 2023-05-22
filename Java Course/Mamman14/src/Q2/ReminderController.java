@@ -1,16 +1,16 @@
 package Q2;
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.io.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class ReminderController {
     private HashMap<LocalDate, String> notes;
@@ -109,6 +109,22 @@ public class ReminderController {
         popUp.showAndWait();
     }
 
+    private void badFileNamePopUp() {
+        Alert popUp = new Alert(Alert.AlertType.INFORMATION);
+        popUp.setTitle("Bad name");
+        popUp.setHeaderText(null);
+        popUp.setContentText("please try again with different file name.");
+        popUp.showAndWait();
+    }
+
+    private void badFileFormatPopUp() {
+        Alert popUp = new Alert(Alert.AlertType.INFORMATION);
+        popUp.setTitle("Bad Format");
+        popUp.setHeaderText(null);
+        popUp.setContentText("the File is not according to the formatr Date: yyyy/mm/dd note: NOTE.");
+        popUp.showAndWait();
+    }
+
     @FXML
     public void initialize() {
         dayComboBox.setValue(1);
@@ -144,5 +160,52 @@ public class ReminderController {
     }
 
 
+    public void saveNotesButtonAction() {
+        String newFileName = getNewFileName();
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src/Q2/" + newFileName + ".txt"));
+            LocalDate date;
+            String note;
+            for (LocalDate key : notes.keySet()) {
+                date = key;
+                note = notes.get(date);
+                writer.write("Date: " + date + " Note: " + note);
+                writer.flush();
+                writer.newLine();
+            }
+            writer.close();
+        } catch (IOException e) {
+            badFileNamePopUp();
+        }
+    }
+
+    private String getNewFileName() {
+        String name;
+        TextInputDialog input = new TextInputDialog();
+        input.setTitle("New file name");
+        input.setHeaderText(null);
+        input.setContentText("Please enter the files name:");
+        Optional<String> optionalInput = input.showAndWait();
+        name = optionalInput.get();
+        return name;
+    }
+
+    public void loadNotesButtonAction() {
+        String loadedFile = getNewFileName();
+        String filePath = "src/Q2/" + loadedFile + ".txt";
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath))
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        } catch (FileNotFoundException e) {
+            badFileNamePopUp();
+        } catch (IOException e) {
+            badFileFormatPopUp();
+        }
+    }
 }
+
 
