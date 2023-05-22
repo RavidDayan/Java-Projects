@@ -31,8 +31,13 @@ public class Student implements Comparable<Student> {
     private boolean isValidId(int id) {
         return id >= 0 && id <= 999999999;
     }
+
     private boolean isValidGrade(int grade) {
         return grade >= 0 && grade <= 100;
+    }
+
+    public boolean equals(Student other) {
+        return this.id==other.id && this.name.equals(other.name);
     }
 
     @Override
