@@ -32,19 +32,19 @@ public class ReminderController {
         }
         return years;
     }
-    private static List<Integer> generateDays(){
-        List<Integer> years = new ArrayList<>();
-        for (int year = 1970; year <=2023 ; year++) {
-            years.add(year);
-        }
-        return years;
-    }
     private static List<Integer> generateMonths(){
-        List<Integer> years = new ArrayList<>();
-        for (int year = 1970; year <=2023 ; year++) {
-            years.add(year);
+        List<Integer> months = new ArrayList<>();
+        for (int month = 1; month <=12 ; month++) {
+            months.add(month);
         }
-        return years;
+        return months;
+    }
+    private static List<Integer> generateDays(){
+        List<Integer> days = new ArrayList<>();
+        for (int day = 1; day <=31 ; day++) {
+            days.add(day);
+        }
+        return days;
     }
 }
 
