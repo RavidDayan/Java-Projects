@@ -12,13 +12,18 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
     }
 
     public void add(T newObject) {
-        for (int i = 0; i < array.size(); i++) {
-            if (newObject.compareTo(array.get(i)) == 0 || newObject.compareTo(array.get(i)) == -1) {
-                array.add(i, newObject);
-                break;
-            }
+        if (array.size() == 0) {
             array.add(newObject);
+        } else {
+            for (int i = 0; i < array.size(); i++) {
+                if (newObject.compareTo(array.get(i)) == 0 || newObject.compareTo(array.get(i)) == -1) {
+                    array.add(i, newObject);
+                    break;
+                }
+                array.add(newObject);
+            }
         }
+
 
     }
 
@@ -33,8 +38,9 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
         return counter;
     }
 
+    @Override
     public Iterator<T> iterator() {
-        return new GroupIterator<T>();
+        return new GroupIterator<T>(this);
     }
 
 
@@ -42,23 +48,27 @@ public class SortedGroup<T extends Comparable<T>> implements Iterable<T> {
         return 0;
     }
 
-    private class GroupIterator<T> implements Iterator<T> {
+    private class GroupIterator<T extends Comparable<T>> implements Iterator<T> {
         private int index;
+        private SortedGroup<T> group;
 
-        public GroupIterator() {
+        public GroupIterator(SortedGroup<T> group) {
             index = 0;
+            this.group = group;
         }
 
         @Override
         public boolean hasNext() {
-            return index < array.size();
+            return index <array.size();
         }
 
         @Override
         public T next() {
             if (hasNext()) {
+                T object=group.array.get(index);
                 index++;
-                return (T) array.get(index++);
+                return object;
+
             } else {
                 throw new NoSuchElementException();
             }
