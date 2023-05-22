@@ -1,5 +1,6 @@
 package Q2;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class ReminderController {
-    private HashMap<LocalDate,String> notes;
+    private HashMap<LocalDate, String> notes;
     @FXML
     private Button showButton;
     @FXML
@@ -25,26 +26,39 @@ public class ReminderController {
     @FXML
     private TextField noteTextField;
 
-    private static List<Integer> generateYears(){
+    private static List<Integer> generateYears() {
         List<Integer> years = new ArrayList<>();
-        for (int year = 1970; year <=2023 ; year++) {
+        for (int year = 1970; year <= 2023; year++) {
             years.add(year);
         }
         return years;
     }
-    private static List<Integer> generateMonths(){
+
+    private static List<Integer> generateMonths() {
         List<Integer> months = new ArrayList<>();
-        for (int month = 1; month <=12 ; month++) {
+        for (int month = 1; month <= 12; month++) {
             months.add(month);
         }
         return months;
     }
-    private static List<Integer> generateDays(){
+
+    private static List<Integer> generateDays() {
         List<Integer> days = new ArrayList<>();
-        for (int day = 1; day <=31 ; day++) {
+        for (int day = 1; day <= 31; day++) {
             days.add(day);
         }
         return days;
     }
+
+    public ReminderController() {
+        notes=new HashMap<>();
+        showButton=new Button();
+        saveButton=new Button();
+        noteTextField=new TextField();
+        dayComboBox = new ComboBox<>(FXCollections.observableList(generateDays()));
+        monthComboBox = new ComboBox<>(FXCollections.observableList(generateMonths()));
+        yearComboBox = new ComboBox<>(FXCollections.observableList(generateYears()));
+    }
+
 }
 
