@@ -13,7 +13,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         stage.setTitle("Note Calendar");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(false);//makes scene not resizable to keep user experience
         stage.show();
     }
 
