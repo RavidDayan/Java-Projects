@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ReminderFxml.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Reminder.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Note Calendar");
         stage.setScene(scene);

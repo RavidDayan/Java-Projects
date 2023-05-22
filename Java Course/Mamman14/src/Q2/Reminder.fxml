@@ -33,7 +33,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" text="save" onAction="#saveButtonAction"/>
+                  <Button mnemonicParsing="false" onAction="#saveButtonAction" text="save" />
                   <TextField fx:id="noteTextField" prefHeight="25.0" prefWidth="322.0">
                      <HBox.margin>
                         <Insets left="10.0" />
@@ -41,7 +41,7 @@
                   </TextField>
                </children>
             </HBox>
-            <Button fx:id="showButton" mnemonicParsing="false" text="show reminder" onAction="#showButtonAction">
+            <Button mnemonicParsing="false" onAction="#showButtonAction" text="show reminder">
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin></Button>
@@ -54,12 +54,13 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="34.0" prefWidth="384.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Save Notes" onAction="#saveNotesButtonAction">
+            <Button mnemonicParsing="false" onAction="#saveNotesButtonAction" text="Save Notes">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Load Notes" onAction="#loadNotesButtonAction">
+            <Button mnemonicParsing="false" text="New Calender" onAction="#newCalenderButtonAction"/>
+            <Button mnemonicParsing="false" onAction="#loadNotesButtonAction" text="Load Notes">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
