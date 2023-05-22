@@ -34,7 +34,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="saveButton" mnemonicParsing="false" text="save" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" text="save" onAction="#saveButtonAction"/>
                   <TextField fx:id="noteTextField" prefHeight="25.0" prefWidth="322.0">
                      <HBox.margin>
                         <Insets left="10.0" />

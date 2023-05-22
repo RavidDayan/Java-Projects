@@ -51,13 +51,38 @@ public class ReminderController {
     }
 
     public ReminderController() {
-        notes=new HashMap<>();
-        showButton=new Button();
-        saveButton=new Button();
-        noteTextField=new TextField();
-        dayComboBox = new ComboBox<>(FXCollections.observableList(generateDays()));
-        monthComboBox = new ComboBox<>(FXCollections.observableList(generateMonths()));
-        yearComboBox = new ComboBox<>(FXCollections.observableList(generateYears()));
+        notes = new HashMap<>();
+    }
+    @FXML
+    private void saveButtonAction(){
+        int year=yearComboBox.getValue();
+        int month=monthComboBox.getValue();
+        int day=dayComboBox.getValue();
+        if(isDateValid(year,month,day)){
+            LocalDate date=LocalDate.of(year,month,day);
+            String note=noteTextField.getText();
+            notes.put(date,note);
+        }
+        else{
+            System.out.println("no data to save");
+        }
+    }
+    @FXML
+    public void initialize() {
+        dayComboBox.setValue(1);
+        dayComboBox.getItems().addAll(generateDays());
+        monthComboBox.setValue(1);
+        monthComboBox.getItems().addAll(generateMonths());
+        yearComboBox.setValue(2023);
+        yearComboBox.getItems().addAll(generateYears());
+    }
+    private boolean isDateValid(int year,int month,int day){
+        try{
+            LocalDate.of(year,month,day);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }
