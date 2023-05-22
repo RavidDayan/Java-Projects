@@ -54,12 +54,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="34.0" prefWidth="384.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Save Notes">
+            <Button mnemonicParsing="false" text="Save Notes" onAction="#saveNotesButtonAction">
                <HBox.margin>
                   <Insets right="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Load Notes">
+            <Button mnemonicParsing="false" text="Load Notes" onAction="#loadNotesButtonAction">
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
