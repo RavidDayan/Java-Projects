@@ -240,7 +240,7 @@ public class ReminderController {
         }
         return newNotes;
     }
-//delets current calander and makes a new clean one
+//deletes current calendar and makes a new clean one
     public void newCalenderButtonAction() {
         notes = new HashMap<LocalDate, String>();
         NewCalenderPopUp();
