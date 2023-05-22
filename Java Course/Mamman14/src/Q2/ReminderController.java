@@ -53,20 +53,37 @@ public class ReminderController {
     public ReminderController() {
         notes = new HashMap<>();
     }
+
     @FXML
-    private void saveButtonAction(){
-        int year=yearComboBox.getValue();
-        int month=monthComboBox.getValue();
-        int day=dayComboBox.getValue();
-        if(isDateValid(year,month,day)){
-            LocalDate date=LocalDate.of(year,month,day);
-            String note=noteTextField.getText();
-            notes.put(date,note);
+    private void showButtonAction() {
+        if(NoteExist()){
+            String note= notes.get(getDate());
+            noteTextField.setText(note);
         }
         else{
+            String note= "";
+            noteTextField.setText(note);
+        }
+    }
+
+    private boolean NoteExist() {
+        if (isDateValid()) {
+            return notes.containsKey(getDate());
+        }
+        return false;
+    }
+
+    @FXML
+    private void saveButtonAction() {
+        if (isDateValid()) {
+            LocalDate date = getDate();
+            String note = noteTextField.getText();
+            notes.put(date, note);
+        } else {
             System.out.println("no data to save");
         }
     }
+
     @FXML
     public void initialize() {
         dayComboBox.setValue(1);
@@ -76,14 +93,27 @@ public class ReminderController {
         yearComboBox.setValue(2023);
         yearComboBox.getItems().addAll(generateYears());
     }
-    private boolean isDateValid(int year,int month,int day){
-        try{
-            LocalDate.of(year,month,day);
+
+    private boolean isDateValid() {
+        try {
+            int year = yearComboBox.getValue();
+            int month = monthComboBox.getValue();
+            int day = dayComboBox.getValue();
+            LocalDate.of(year, month, day);
             return true;
         } catch (Exception e) {
             return false;
         }
     }
+
+    private LocalDate getDate() {
+        int year = yearComboBox.getValue();
+        int month = monthComboBox.getValue();
+        int day = dayComboBox.getValue();
+        return LocalDate.of(year, month, day);
+    }
+
+
 
 }
 
