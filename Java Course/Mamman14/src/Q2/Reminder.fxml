@@ -9,66 +9,69 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Q2.ReminderController">
-   <center>
-      <VBox alignment="CENTER" prefHeight="168.0" prefWidth="384.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Calender reminder" textAlignment="CENTER" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-               <children>
-                  <Label text="Day" />
-                  <Label text="Month" />
-                  <Label text="Year" />
-               </children>
-            </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <ComboBox fx:id="dayComboBox" prefWidth="150.0" />
-                  <ComboBox fx:id="monthComboBox" prefWidth="150.0" />
-                  <ComboBox fx:id="yearComboBox" prefWidth="150.0" />
-               </children>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#saveButtonAction" text="save" />
-                  <TextField fx:id="noteTextField" prefHeight="25.0" prefWidth="322.0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <Button mnemonicParsing="false" onAction="#showButtonAction" text="show reminder">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin></Button>
-         </children>
-      </VBox>
-   </center>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-   <bottom>
-      <HBox alignment="CENTER" prefHeight="34.0" prefWidth="384.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" onAction="#saveNotesButtonAction" text="Save Notes">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" text="New Calender" onAction="#newCalenderButtonAction"/>
-            <Button mnemonicParsing="false" onAction="#loadNotesButtonAction" text="Load Notes">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-         <BorderPane.margin>
-            <Insets top="10.0" />
-         </BorderPane.margin>
-      </HBox>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="202.0"
+            prefWidth="404.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Q2.ReminderController">
+    <center>
+        <VBox alignment="CENTER" prefHeight="168.0" prefWidth="384.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Calender reminder" textAlignment="CENTER"/>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
+                    <children>
+                        <Label text="Day"/>
+                        <Label text="Month"/>
+                        <Label text="Year"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <ComboBox fx:id="dayComboBox" prefWidth="150.0"/>
+                        <ComboBox fx:id="monthComboBox" prefWidth="150.0"/>
+                        <ComboBox fx:id="yearComboBox" prefWidth="150.0"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </VBox.margin>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#saveButtonAction" text="save"/>
+                        <TextField fx:id="noteTextField" prefHeight="25.0" prefWidth="322.0">
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <Button mnemonicParsing="false" onAction="#showButtonAction" text="show reminder">
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="10.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+        </VBox>
+    </center>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="34.0" prefWidth="384.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button mnemonicParsing="false" onAction="#saveNotesButtonAction" text="Save Notes">
+                    <HBox.margin>
+                        <Insets right="5.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" text="New Calender" onAction="#newCalenderButtonAction"/>
+                <Button mnemonicParsing="false" onAction="#loadNotesButtonAction" text="Load Notes">
+                    <HBox.margin>
+                        <Insets left="5.0"/>
+                    </HBox.margin>
+                </Button>
+            </children>
+            <BorderPane.margin>
+                <Insets top="10.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </bottom>
 </BorderPane>
