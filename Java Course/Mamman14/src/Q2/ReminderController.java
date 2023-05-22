@@ -73,6 +73,7 @@ public class ReminderController {
 
         return false;
     }
+
     //saves text by to the date in combobox if date is valid
     @FXML
     private void saveButtonAction() {//
@@ -84,7 +85,8 @@ public class ReminderController {
             clearNoteTextField();
         }
     }
-//alerts the user that an invalid date has been chosen
+
+    //alerts the user that an invalid date has been chosen
     private void invalidDatePopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("Illegal date ");
@@ -92,7 +94,8 @@ public class ReminderController {
         popUp.setContentText("Date does not exist,please enter different date.");
         popUp.showAndWait();
     }
-//alerts the user that the note has been saved successfully
+
+    //alerts the user that the note has been saved successfully
     private void noteSavedPopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("Note saved ");
@@ -100,7 +103,8 @@ public class ReminderController {
         popUp.setContentText("the note has been successfully saved.");
         popUp.showAndWait();
     }
-//alerts the user that the chosen date has no note to show
+
+    //alerts the user that the chosen date has no note to show
     private void noNoteExistsPopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("No note for date");
@@ -108,7 +112,8 @@ public class ReminderController {
         popUp.setContentText("There is no note for specified date.");
         popUp.showAndWait();
     }
-//alerts the user that the file name chosen to save/load is not valid
+
+    //alerts the user that the file name chosen to save/load is not valid
     private void badFileNamePopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("Bad name");
@@ -116,7 +121,8 @@ public class ReminderController {
         popUp.setContentText("please try again with different file name.");
         popUp.showAndWait();
     }
-//alerts the user that the file loaded is not in the correct format to read form itr
+
+    //alerts the user that the file loaded is not in the correct format to read form itr
     private void badFileFormatPopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("Bad Format");
@@ -124,7 +130,8 @@ public class ReminderController {
         popUp.setContentText("the File is not according to the format Date: yyyy-mm-dd note: NOTE.");
         popUp.showAndWait();
     }
-//alerts the user that the calendar has been renewed to a blank calander
+
+    //alerts the user that the calendar has been renewed to a blank calander
     private void NewCalenderPopUp() {
         Alert popUp = new Alert(Alert.AlertType.INFORMATION);
         popUp.setTitle("new Calender");
@@ -142,7 +149,8 @@ public class ReminderController {
         yearComboBox.setValue(2023);
         yearComboBox.getItems().addAll(generateYears());
     }
-//checks if chosen date is valid, if not alerts the user to choose a valid date
+
+    //checks if chosen date is valid, if not alerts the user to choose a valid date
     private boolean isDateValid() {
         try {
             int year = yearComboBox.getValue();
@@ -155,17 +163,20 @@ public class ReminderController {
             return false;
         }
     }
-//clears the text field text
+
+    //clears the text field text
     private void clearNoteTextField() {
         noteTextField.setText("");
     }
-//gets the date as a LocalDate from the date chosen in combo box
+
+    //gets the date as a LocalDate from the date chosen in combo box
     private LocalDate getDate() {
         int year = yearComboBox.getValue();
         int month = monthComboBox.getValue();
         int day = dayComboBox.getValue();
         return LocalDate.of(year, month, day);
     }
+
     //requests a name to save file as and saves file on local package
     public void saveNotesButtonAction() {
         String newFileName = getNewFileName();//requests file name
@@ -185,7 +196,8 @@ public class ReminderController {
             badFileNamePopUp();
         }
     }
-//requests a new name to save file
+
+    //requests a new name to save file
     private String getNewFileName() {
         String name;
         TextInputDialog input = new TextInputDialog();
@@ -196,7 +208,8 @@ public class ReminderController {
         name = optionalInput.get();
         return name;
     }
-//loads notes from existing file, alerts user if no such file exists or the format in file is bad.
+
+    //loads notes from existing file, alerts user if no such file exists or the format in file is bad.
     public void loadNotesButtonAction() {
         String loadedFile = getNewFileName();
         String filePath = "src/Q2/" + loadedFile + ".txt";
@@ -212,17 +225,19 @@ public class ReminderController {
         }
     }
 
-//inserts the line to current new calendar
+    //inserts the line to current new calendar
     public void insertNewNote(String line, HashMap<LocalDate, String> newNotes) throws DateTimeParseException, IOException {
         LocalDate date = getDateFromLine(line);
         String note = getNoteFromLine(line);
         newNotes.put(date, note);
     }
-//converts date text from loaded text file into LocalDate format
+
+    //converts date text from loaded text file into LocalDate format
     private LocalDate getDateFromLine(String line) throws DateTimeParseException {
         String date = line.substring(6, 16);
         return LocalDate.parse(date);
     }
+
     //converts the note text from loaded text file into String format
     private String getNoteFromLine(String line) throws IOException {
         if (line.charAt(22) != ' ') {//if the note section format is not according to format alerts the user
@@ -231,7 +246,8 @@ public class ReminderController {
         String note = line.substring(23);
         return note;
     }
-//reads all lines from loaded text file and returns a new hashmap containing them.
+
+    //reads all lines from loaded text file and returns a new hashmap containing them.
     private HashMap<LocalDate, String> loadedNotes(BufferedReader reader) throws IOException, DateTimeParseException {
         String line;
         HashMap<LocalDate, String> newNotes = new HashMap<>();
@@ -240,7 +256,8 @@ public class ReminderController {
         }
         return newNotes;
     }
-//deletes current calendar and makes a new clean one
+
+    //deletes current calendar and makes a new clean one
     public void newCalenderButtonAction() {
         notes = new HashMap<LocalDate, String>();
         NewCalenderPopUp();
