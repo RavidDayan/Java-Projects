@@ -5,10 +5,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class TrafficLightsController {
-    private Intersection intersection;
-    int carGreenTime;
-    int pedestriansGreenTime;
-
+    private Intersection intersection;//intersection of the graphics
+    //time for traffic light green and red
+    int topBottomGreenLightTime;
+    int topBottomRedLightTime;
+    //lights of all traffic lights.
     @FXML
     private Circle topRedCarLight;
     @FXML
@@ -46,30 +47,33 @@ public class TrafficLightsController {
     private TrafficLight bottom;
     private TrafficLight left;
 
-    public TrafficLightsController(String carGreenTime, String pedestriansGreenTime) {
-        setCarGreenTime(carGreenTime);
-        setPedestriansGreenTime(pedestriansGreenTime);
+    //constructor sets the time for timers.
+    public TrafficLightsController(String topBottomGreenLightTime, String topBottomRedLightTime) {
+        setTopBottomGreenLightTime(topBottomGreenLightTime);
+        setTopBottomRedLightTime(topBottomRedLightTime);
     }
 
+    //initialize the traffic lights and intersection and starts the light logic of intersection
     @FXML
     public void initialize() {
         top = new TrafficLight(topRedCarLight, topGreenCarLight, topRedPedestrianLight, topGreenPedestrianLight);
         right = new TrafficLight(rightRedCarLight, rightGreenCarLight, rightRedPedestrianLight, rightGreenPedestrianLight);
         bottom = new TrafficLight(bottomRedCarLight, bottomGreenCarLight, bottomRedPedestrianLight, bottomGreenPedestrianLight);
         left = new TrafficLight(leftRedCarLight, leftGreenCarLight, leftRedPedestrianLight, leftGreenPedestrianLight);
-        intersection = new Intersection(top, bottom, left, right, carGreenTime, pedestriansGreenTime);
+        intersection = new Intersection(top, bottom, left, right, topBottomGreenLightTime, topBottomRedLightTime);
         runningInterSection();
     }
 
-    public void setCarGreenTime(String time) {
-        carGreenTime = Integer.parseInt(time);
-        System.out.println(carGreenTime);
+    //converts time received in strings to integer
+    public void setTopBottomGreenLightTime(String time) {
+        topBottomGreenLightTime = Integer.parseInt(time);
     }
 
-    public void setPedestriansGreenTime(String time) {
-        pedestriansGreenTime = Integer.parseInt(time);
+    //converts time received in strings to integer
+    public void setTopBottomRedLightTime(String time) {
+        topBottomRedLightTime = Integer.parseInt(time);
     }
-
+//starts the intersection light logic
     private void runningInterSection() {
         Thread blinker = new Thread(intersection);
         blinker.start();
