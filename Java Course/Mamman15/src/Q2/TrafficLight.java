@@ -5,7 +5,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-public class TrafficLight {
+import static java.lang.Thread.sleep;
+
+public class TrafficLight implements Runnable {
     private Circle redCircleLight;
     private Circle greenCircleLight;
     private Rectangle redRectangleLight;
@@ -17,13 +19,45 @@ public class TrafficLight {
         redRectangleLight = redRectangle;
         greenRectangleLight = greenRectangle;
     }
-    public void carsGreenLight(){
 
+    public void carsGreenLight() {
+        colorShapeGreen(greenCircleLight);
+        hideShapeColor(redCircleLight);
+        colorShapeRed(redRectangleLight);
+        hideShapeColor(greenRectangleLight);
     }
-    public void carsRedLight(){
 
+    public void carsRedLight() {
+        colorShapeGreen(greenRectangleLight);
+        hideShapeColor(redRectangleLight);
+        colorShapeRed(redCircleLight);
+        hideShapeColor(greenCircleLight);
     }
-    public void HideShapeColor(Shape shape){
+
+    public void hideShapeColor(Shape shape) {
         shape.setFill(Color.TRANSPARENT);
+    }
+
+    public void colorShapeRed(Shape shape) {
+        shape.setFill(Color.RED);
+    }
+
+    public void colorShapeGreen(Shape shape) {
+        shape.setFill(Color.GREEN);
+    }
+
+    @Override
+    public void run() {
+        colorShapeGreen(greenRectangleLight);
+        try {
+            sleep(200);
+        } catch (InterruptedException e) {
+
+        }
+        hideShapeColor(greenRectangleLight);
+        try {
+            sleep(200);
+        } catch (InterruptedException e) {
+        }
     }
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="412.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="509.0" prefWidth="412.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="Q2.TrafficLightsController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -21,34 +21,34 @@
    <children>
       <VBox alignment="CENTER" prefHeight="192.0" prefWidth="155.0" GridPane.columnIndex="1">
          <children>
-            <Circle fill="RED" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#00ff09" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1aff00" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Circle fx:id="topRedCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="topGreenCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle fx:id="topRedPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Rectangle fx:id="topGreenPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <Circle fill="RED" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#00ff09" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1aff00" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Circle fx:id="leftRedCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="leftGreenCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle fx:id="leftRedPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Rectangle fx:id="leftGreenPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="133.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Circle fill="RED" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#00ff09" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1aff00" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Circle fx:id="bottomRedCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="bottomGreenCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle fx:id="bottomRedPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Rectangle fx:id="bottomGreenPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
          </children>
       </VBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <children>
-            <Circle fill="RED" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#00ff09" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1aff00" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Circle fx:id="rightRedCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="rightGreenCarLight" fill="TRANSPARENT" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+            <Rectangle fx:id="rightRedPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
+            <Rectangle fx:id="rightGreenPedestrianLight" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="35.0" stroke="BLACK" strokeType="INSIDE" width="22.0" />
          </children>
       </VBox>
    </children>
