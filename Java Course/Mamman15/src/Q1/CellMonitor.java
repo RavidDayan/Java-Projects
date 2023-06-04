@@ -7,7 +7,7 @@ public class CellMonitor {
 
     public CellMonitor(Cell[][] C) {
         rowSize = C.length;
-        colSize = C.length;
+        colSize = C[0].length;
         this.C = new boolean[rowSize * colSize + 1];
         this.C[0] = true;
         for (int i = 1; i < this.C.length; i++) {
@@ -16,12 +16,12 @@ public class CellMonitor {
     }
 
     public synchronized boolean canCellPrint(int row, int col) {
-        int convertedIndex = 1+(row) * rowSize + col;
+        int convertedIndex = 1+(row) * colSize + col;
         return C[convertedIndex - 1] == true;
     }
 
     public synchronized void updatePrintedCell(int row, int col) {
-        int convertedIndex = 1+(row) * rowSize + col;
+        int convertedIndex = 1+(row) * colSize + col;
         C[convertedIndex] = true;
     }
 

@@ -15,6 +15,7 @@ public class MatrixMult {
         randomizedMatrix(B);
         printMatrix(A,"A");
         printMatrix(B,"B");
+        System.out.println("Matrix C");
         calculateMatrixC();
     }
 
@@ -30,7 +31,7 @@ public class MatrixMult {
     }
 
     private int randomCellValue() {
-        return (int) Math.random() * 10;
+        return (int) (Math.random() * 10);
     }
 
     private void randomizedMatrix(int[][] matrix) {
@@ -41,7 +42,7 @@ public class MatrixMult {
         }
     }
     private void printMatrix(int[][] matrix,String name) {
-        System.out.println("Matrix"+name+":");
+        System.out.println("Matrix "+name+":");
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 System.out.print(matrix[i][j]+" ");

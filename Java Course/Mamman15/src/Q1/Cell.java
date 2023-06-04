@@ -49,12 +49,13 @@ public class Cell implements Runnable {
         return columnArray;
     }
     private void printCell(){
-        if(col==B[0].length){
-            System.out.print(cellValue+" ");
-            System.out.println();
+        if(col+1==B[0].length){
+            System.out.println(cellValue+" ");
+
         }
         else{
             System.out.print(cellValue+" ");
         }
+
     }
 }
