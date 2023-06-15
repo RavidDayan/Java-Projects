@@ -4,8 +4,15 @@ public class Question {
     private String question;
     private String[] answers;
     private int correctAnswerIndex;
-    public Question(String question,String )
-    private void scrambler(){
+    public Question(String question,String[] answers){
+        this.question=question;
+        this.answers=new String[answers.length];
+        for(int i=0;i<answers.length;i++){
+            this.answers[i]=answers[i];
+        }
+        scrambleQuestions();
+    }
+    private void scrambleQuestions(){
         String temp;
         int switchingIndex=(int)(Math.random()*4);
         temp=answers[switchingIndex];
