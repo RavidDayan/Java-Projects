@@ -12,6 +12,15 @@ public class Question {
         }
         scrambleQuestions();
     }
+    public int getCorrectAnswerIndex(){
+        return correctAnswerIndex;
+    }
+    public String getQuestion(){
+        return question;
+    }
+    public String getAnswer(int index){
+        return answers[index];
+    }
     private void scrambleQuestions(){
         String temp;
         int switchingIndex=(int)(Math.random()*4);
