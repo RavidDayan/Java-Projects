@@ -1,0 +1,100 @@
+What does CPU stand for?
+Central Processing Unit
+Computer Power Unit
+Core Processing Unit
+Central Program Unit
+What is the primary function of a CPU in a computer?
+Executing instructions and performing calculations
+Storing data and files
+Managing network connections
+Rendering graphics
+Which company is known for manufacturing the popular line of CPUs called "Ryzen"?
+AMD
+Intel
+NVIDIA
+Dell
+What is the clock speed of a CPU measured in?
+Hertz (Hz)
+Bytes
+Gigabytes (GB)
+Pixels
+What is the purpose of the CPU cache?
+To store frequently accessed data for faster retrieval
+To control the power supply of the CPU
+To store the operating system files
+To enhance the cooling efficiency of the CPU
+What does it mean to "overclock" a CPU?
+Running a CPU at a higher clock speed than its default setting
+Reducing the clock speed of the CPU
+Upgrading the physical size of the CPU
+Increasing the power consumption of the CPU
+What are the two main components of a CPU?
+The control unit and the arithmetic logic unit (ALU)
+The motherboard and the power supply
+The RAM and the hard drive
+The GPU and the cooling fan
+What is the purpose of a heat sink in a CPU?
+To dissipate heat and keep the CPU temperature within safe limits
+To increase the clock speed of the CPU
+To store temporary data for the CPU
+To protect the CPU from power surges
+What is the difference between a 32-bit and a 64-bit CPU architecture?
+A 32-bit CPU can process 32 bits of data at a time, while a 64-bit CPU can process 64 bits of data at a time
+The physical size of the CPU
+The number of cores in the CPU
+The amount of cache memory in the CPU
+What is the purpose of the CPU fan?
+To cool down the CPU by dissipating heat generated during operation
+To supply power to the CPU
+To store data for the CPU
+To enhance the graphics performance of the CPU
+What is the role of the CPU in the boot process of a computer?
+The CPU executes the instructions stored in the computer's firmware to initiate the boot sequence
+The CPU determines the screen resolution of the computer
+The CPU connects to the internet during boot-up
+The CPU loads the operating system from the hard drive
+What is the purpose of a CPU socket on a motherboard?
+It provides a physical and electrical connection between the CPU and the motherboard
+It stores temporary data for the CPU
+It regulates the power supply to the CPU
+It controls the clock speed of the CPU
+What is the difference between a single-core and a multi-core CPU?
+A single-core CPU has only one processing unit, while a multi-core CPU has multiple processing units
+A single-core CPU has a higher clock speed than a multi-core CPU
+A multi-core CPU has more cache memory than a single-core CPU
+A single-core CPU can perform better in multitasking than a multi-core CPU
+What is thermal throttling in relation to a CPU?
+It is a mechanism that reduces the CPU's clock speed to prevent overheating and maintain safe operating temperatures
+It increases the clock speed of the CPU for better performance
+It shuts down the CPU in case of high temperatures
+It increases the power consumption of the CPU
+What is the purpose of a CPU governor in mobile devices?
+It manages the CPU's performance and power efficiency based on the device's workload and user settings
+It controls the display brightness of the device
+It manages the battery charging process
+It regulates the audio output of the device
+What is the role of an instruction set in a CPU?
+It defines the set of instructions that the CPU can execute
+It determines the physical size of the CPU
+It controls the graphics processing of the CPU
+It manages the network connections of the CPU
+What is the purpose of the CPU cooler?
+To maintain the CPU's temperature within safe limits by dissipating heat
+To increase the clock speed of the CPU
+To store temporary data for the CPU
+To protect the CPU from power surges
+What is the difference between a desktop CPU and a mobile CPU?
+Mobile CPUs are designed for low power consumption and optimized for battery life, while desktop CPUs focus on performance
+Desktop CPUs are physically larger than mobile CPUs
+Mobile CPUs have more cache memory than desktop CPUs
+Desktop CPUs have integrated graphics, while mobile CPUs require a separate GPU
+What is a CPU bottleneck in computer performance?
+It occurs when the CPU becomes the limiting factor in the overall system performance, unable to keep up with other components
+It refers to a physical damage to the CPU
+It happens when the CPU has excessive cache memory
+It occurs when the CPU operates at a higher clock speed than recommended
+What is the purpose of the CPU register?
+It is a small, high-speed storage location inside the CPU used for temporary data storage during processing
+It stores the operating system files
+It manages the network connections of the CPU
+It controls the display output of the CPU
