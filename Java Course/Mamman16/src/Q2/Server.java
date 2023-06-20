@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 public class Server extends Application {
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Server.fxml"));
         Scene scene = new Scene(root);
         stage.setTitle("Server");
         stage.setScene(scene);
