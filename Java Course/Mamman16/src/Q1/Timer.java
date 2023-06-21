@@ -6,23 +6,23 @@ import javafx.scene.control.Label;
 public class Timer extends Thread {//timer from each question's countdown
     private Label timeMeter;//label that shows the current timer second
     private int time;//how many seconds to countdown
-    private boolean interupted;//statues if timer is interrupted from the outside
+    private boolean interrupted;//statues if timer is interrupted from the outside
 
-    public void interupt() {
-        interupted = true;
+    public void interrupt() {
+        interrupted = true;
     }
 
     public Timer(Label timeMeter, int time) {
         this.timeMeter = timeMeter;
         this.time = time;
-        interupted = false;
+        interrupted = false;
     }//constructor
 
     @Override
     public void run() {
         int countdown = time;
         String stringedCountdown;
-        while (countdown > 0 && !interupted) {
+        while (countdown > 0 && !interrupted) {
             try {
                 sleep(1000);
                 countdown--;
@@ -35,6 +35,5 @@ public class Timer extends Thread {//timer from each question's countdown
                 System.out.println("interrupted");
             }
         }//runs as long as countdown is above 0 and not interrupted
-
     }
 }

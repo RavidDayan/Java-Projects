@@ -3,7 +3,6 @@ package Q1;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.paint.Paint;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -131,7 +130,6 @@ public class UserController {
             questionCounter++;
             questionNumberLabel.setText("Question:" + String.valueOf(questionCounter));
             disableStartButton();
-            System.out.println("disabled");
             resetGameAppearance();
             getNewQuestion();
             ShowQuestion();
@@ -162,7 +160,7 @@ public class UserController {
     }//states that answer 4 is picked
 
     private void afterAnswerProcedures(int i) {
-        timer.interupt();
+        timer.interrupt();
         feedbackOnUserAnswer(i);
         changeButtonColorByAnswer();
         disableAnswerButtons();
@@ -187,6 +185,7 @@ public class UserController {
     }//shoes the final score of game
 
     private void enableStartButton() {
+        startButton.setDisable(false);
         startButton.setDisable(false);
     }//enable the start button
 
